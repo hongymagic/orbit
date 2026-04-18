@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 import { defaultNav, type NavSection } from "@/lib/nav";
 import { Icon } from "@/components/icons";
 
-import { Avatar, BrandMark } from "./brand-mark";
+import { BrandMark } from "./brand-mark";
+import { ProfileMenu } from "./profile-menu";
 
 export function Sidebar({
   active,
@@ -75,19 +76,14 @@ export function Sidebar({
       </div>
 
       <div className="p-2.5 shadow-[0_-1px_0_var(--color-line)] shrink-0">
-        <button
-          type="button"
-          className="flex items-center gap-2.5 px-2 py-1.5 rounded-sm w-full text-left hover:bg-bg-muted cursor-pointer"
-        >
-          <Avatar initials={user.initials} />
-          <div className="leading-[1.2] min-w-0">
-            <div className="text-[13px] font-medium truncate">{user.name}</div>
-            <div className="text-[11px] text-fg-subtle font-mono truncate">{user.role}</div>
-          </div>
-          <div className="ml-auto text-fg-faint">
-            <Icon name="chev" />
-          </div>
-        </button>
+        <ProfileMenu
+          user={{
+            initials: user.initials,
+            name: user.name,
+            email: `${user.name.toLowerCase().replace(" ", ".")}@orbit.app`,
+            role: user.role,
+          }}
+        />
       </div>
     </aside>
   );

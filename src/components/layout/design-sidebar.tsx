@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { designNav } from "@/lib/design-nav";
 import { Icon } from "@/components/icons";
-import { Avatar, BrandMark } from "./brand-mark";
+import { BrandMark } from "./brand-mark";
+import { ProfileMenu } from "./profile-menu";
 
 export function DesignSidebar() {
   const pathname = usePathname();
@@ -62,13 +63,14 @@ export function DesignSidebar() {
       </div>
 
       <div className="p-2.5 shadow-[0_-1px_0_var(--color-line)] shrink-0">
-        <div className="flex items-center gap-2.5 px-2 py-1.5 rounded-sm">
-          <Avatar initials="DS" />
-          <div className="leading-[1.2] min-w-0">
-            <div className="text-[13px] font-medium truncate">Design System</div>
-            <div className="text-[11px] text-fg-subtle font-mono truncate">reference · v0.1</div>
-          </div>
-        </div>
+        <ProfileMenu
+          user={{
+            initials: "RL",
+            name: "Rhea Lin",
+            email: "rhea@orbit.app",
+            role: "platform · admin",
+          }}
+        />
       </div>
     </aside>
   );
