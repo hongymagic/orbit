@@ -15,13 +15,24 @@ permissions:
 
 jobs:
   check:
-    name: ${{ matrix.task }}
+    name: ${{ matrix.name }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
-        task: [format:check, lint, typecheck, build]
+        include:
+          - name: format
+            run: bun run format:check
+          - name: lint
+            run: bun run lint
+          - name: typecheck
+            run: bun run typecheck
+          # `bun run build` would inject NODE_OPTIONS=--use-system-ca (for
+          # local mkcert/corp CA use). That flag is not on Node's NODE_OPTIONS
+          # allow-list, so invoke Next directly in CI instead.
+          - name: build
+            run: bunx --bun next build
 
     steps:
       - name: Checkout
@@ -45,5 +56,5 @@ jobs:
         env:
           LEFTHOOK: "0"
 
-      - name: Run ${{ matrix.task }}
-        run: bun run ${{ matrix.task }}
+      - name: Run ${{ matrix.name }}
+        run: ${{ matrix.run }}
