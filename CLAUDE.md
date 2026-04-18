@@ -77,6 +77,7 @@ src/
 | AI surfaces (`Conversation`, `Message`, `PromptInput`, `CodeBlock`, `Tool`)                                                                           | `@/components/ai-elements/*` |
 | Theme / accent / variation state                                                                                                                      | `@/providers`                |
 | `cn` helper                                                                                                                                           | `@/lib/utils`                |
+| Env vars (zod-validated schema)                                                                                                                       | `@/env`                      |
 | Real provider slots (AI, Auth, DB)                                                                                                                    | `@/integrations/*`           |
 
 Paths follow shadcn conventions (`@/components/ui/*` = shadcn, `@/lib/utils` = cn) so every pasted shadcn / ai-element snippet works without rewriting.
@@ -168,6 +169,7 @@ The token bridge in `globals.css` remaps shadcn semantic classes (`bg-primary`, 
 ## Known quirks
 
 - `/_design` is a rewrite to `/design` (`next.config.ts`). Both resolve; `/_design` is canonical.
+- `typedRoutes: true` is on (`next.config.ts`) — `<Link href>` and `useRouter()` use typed route literals. Unknown routes fail `tsc`; create the route file first, then reference it.
 - The Tweaks panel (`⌘.`) writes to `localStorage`; values survive reloads and propagate across tabs on next navigation.
 - `next/font/google` Geist is wired in `layout.tsx` — don't install `@vercel/font` or a parallel Geist package.
 - Tailwind v4 ignores `tailwind.config.*`. All tokens live in `src/app/globals.css` under `@theme`. A new color utility = a new `--color-*` token there.
