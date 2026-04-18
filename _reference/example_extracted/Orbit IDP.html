@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Orbit — Internal Developer Platform</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="components.jsx"></script>
+<script type="text/babel" src="view-conservative.jsx"></script>
+<script type="text/babel" src="view-confident.jsx"></script>
+<script type="text/babel" src="view-experimental.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
+  "variation": "conservative",
+  "theme": "dark",
+  "accent": "#7a5cff"
+}/*EDITMODE-END*/;
+
+const ACCENTS = [
+  { name:'indigo', color:'#3b5bff' },
+  { name:'violet', color:'#7a5cff' },
+  { name:'emerald', color:'#10a37f' },
+  { name:'rose', color:'#e5484d' },
+  { name:'amber', color:'#e08600' },
+  { name:'mono', color:'#171717' },
+];
+
+function App() {
+  const init = (() => {
+    try { return { ...TWEAK_DEFAULS, ...(JSON.parse(localStorage.getItem('orbit:tweaks') || '{}')) }; }
+    catch { return TWEAK_DEFAULS; }
+  })();
+
+  const [variation, setVariation] = React.useState(init.variation);
+  const [theme, setTheme] = React.useState(init.theme);
+  const [accent, setAccent] = React.useState(init.accent);
+  const [tweaksOpen, setTweaksOpen] = React.useState(false);
+  const [editAvailable, setEditAvailable] = React.useState(false);
+
+  // Apply theme + accent to :root
+  React.useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.style.setProperty('--accent', accent);
+    localStorage.setItem('orbit:tweaks', JSON.stringify({ variation, theme, accent }));
+  }, [theme, accent, variation]);
+
+  // Tweaks protocol
+  React.useEffect(() => {
+    const handler = (e) => {
+      const d = e.data || {};
+      if (d.type === '__activate_edit_mode') { setTweaksOpen(true); setEditAvailable(true); }
+      if (d.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    };
+    window.addEventListener('message', handler);
+    window.parent.postMessage({type:'__edit_mode_available'}, '*');
+    return () => window.removeEventListener('message', handler);
+  }, []);
+
+  const persist = (next) => {
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits: next}, '*');
+  };
+
+  const ViewCmp = variation === 'confident' ? ConfidentView : variation === 'experimental' ? ExperimentalView : ConservativeView;
+  const crumbs = variation === 'confident' ? ['atlas-web', 'Overview'] :
+                 variation === 'experimental' ? ['atlas-web', 'Operations'] :
+                 ['atlas-web', 'Deployments'];
+
+  return (
+    <div className="app">
+      <Sidebar active={variation === 'experimental' ? 'logs' : variation === 'confident' ? 'overview' : 'deployments'} />
+      <div className="main">
+        <Topbar crumbs={crumbs} actions={
+          <div className="var-tabs" role="tablist" aria-label="Variation">
+            {['conservative','confident','experimental'].map(v => (
+              <button key={v} aria-pressed={variation === v} onClick={() => setVariation(v)}>
+                {v[0].toUpperCase() + v.slice(1)}
+              </button>
+            ))}
+          </div>
+        } />
+        <ViewCmp key={variation} />
+      </div>
+
+      <div className={`tweaks ${tweaksOpen ? 'open' : ''}`}>
+        <div className="tweaks-head">
+          <div className="tweaks-title">Tweaks</div>
+          <button className="btn btn-ghost btn-sm btn-icon" onClick={() => setTweaksOpen(false)} aria-label="Close tweaks">
+            {Icon.x}
+          </button>
+        </div>
+        <div className="tweak-row">
+          <label>Theme</label>
+          <div className="seg" role="group">
+            <button aria-pressed={theme === 'light'} onClick={() => { setTheme('light'); persist({theme:'light'}); }}>Light</button>
+            <button aria-pressed={theme === 'dark'} onClick={() => { setTheme('dark'); persist({theme:'dark'}); }}>Dark</button>
+          </div>
+        </div>
+        <div className="tweak-row">
+          <label>Accent</label>
+          <div className="swatches">
+            {ACCENTS.map(a => (
+              <div key={a.name} className="swatch"
+                aria-pressed={accent === a.color}
+                style={{background: a.color}}
+                title={a.name}
+                onClick={() => { setAccent(a.color); persist({accent: a.color}); }} />
+            ))}
+          </div>
+        </div>
+        <div className="tweak-row">
+          <label>Variation</label>
+          <div className="seg" role="group">
+            {['conservative','confident','experimental'].map(v => (
+              <button key={v} aria-pressed={variation === v} onClick={() => { setVariation(v); persist({variation:v}); }}>
+                {v === 'conservative' ? 'Safe' : v === 'confident' ? 'Bold' : 'Lab'}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

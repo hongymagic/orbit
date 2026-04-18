@@ -1,0 +1,31 @@
+"use client";
+
+import { useEffect } from "react";
+
+export type HotkeyModifier = "meta" | "ctrl" | "alt" | "shift";
+
+export type HotkeyDescriptor = {
+  key: string;
+  modifiers?: readonly HotkeyModifier[];
+};
+
+function matches(e: KeyboardEvent, descriptor: HotkeyDescriptor) {
+  const mods = new Set(descriptor.modifiers ?? []);
+  if ((mods.has("meta") || mods.has("ctrl")) && !(e.metaKey || e.ctrlKey)) return false;
+  if (mods.has("alt") && !e.altKey) return false;
+  if (mods.has("shift") && !e.shiftKey) return false;
+  return e.key.toLowerCase() === descriptor.key.toLowerCase();
+}
+
+export function useHotkey(descriptor: HotkeyDescriptor, handler: (e: KeyboardEvent) => void) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (matches(e, descriptor)) {
+        e.preventDefault();
+        handler(e);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [descriptor.key, descriptor.modifiers?.join(","), handler]);
+}
