@@ -34,14 +34,78 @@ const blocks: readonly Block[] = [
     description:
       "Standard email-and-password login with branded wrapper. Form uses shadcn Field primitives. Mount under src/app/ when wiring a real auth route.",
     openHref: "/_design/surfaces/login",
+    internalDemo: true,
   },
   {
-    name: "Sidebar",
-    id: "sidebar-02 / 07 / 13 (merged)",
+    name: "Sidebar · app",
+    id: "app-sidebar",
     category: "Navigation",
-    path: "src/components/{app-sidebar,nav-main,nav-projects,nav-secondary,nav-user,team-switcher}.tsx",
+    path: "src/components/app-sidebar.tsx",
     description:
-      "Collapsible app sidebar with team switcher, grouped nav, and user menu. Raw shadcn output — available if a product surface wants it; the /_design routes themselves use DesignSidebar.",
+      "Full application sidebar — team header, nav-main, documents, secondary section, and user footer. Collapsible=offcanvas.",
+    internalDemo: true,
+  },
+  {
+    name: "Site header",
+    id: "site-header",
+    category: "Navigation",
+    path: "src/components/site-header.tsx",
+    description:
+      "Top bar that pairs with AppSidebar — sidebar toggle + breadcrumb + utility actions.",
+    internalDemo: true,
+  },
+  {
+    name: "Search form",
+    id: "search-form",
+    category: "Navigation",
+    path: "src/components/search-form.tsx",
+    description:
+      "Sidebar-aware search input wrapping a form. Drop inside a SidebarHeader for docs-style nav.",
+    internalDemo: true,
+  },
+  {
+    name: "Team switcher",
+    id: "team-switcher",
+    category: "Navigation",
+    path: "src/components/team-switcher.tsx",
+    description:
+      "Multi-team dropdown with per-item shortcuts and Add-team affordance. Mount in SidebarHeader.",
+    internalDemo: true,
+  },
+  {
+    name: "Version switcher",
+    id: "version-switcher",
+    category: "Navigation",
+    path: "src/components/version-switcher.tsx",
+    description: "Documentation version picker — dropdown with current-selection check mark.",
+    internalDemo: true,
+  },
+  {
+    name: "Section cards",
+    id: "section-cards",
+    category: "Application",
+    path: "src/components/section-cards.tsx",
+    description:
+      "4-up KPI grid with gradient cards, trend badges, and caption footers. Container-query responsive.",
+    internalDemo: true,
+  },
+  {
+    name: "Settings dialog",
+    id: "settings-dialog",
+    category: "Application",
+    path: "src/components/settings-dialog.tsx",
+    description:
+      "Modal with embedded SidebarProvider — category list on the left, content on the right.",
+    internalDemo: true,
+  },
+  {
+    name: "Data table",
+    id: "data-table",
+    category: "Data",
+    path: "src/components/data-table.tsx",
+    description:
+      "TanStack Table + dnd-kit sortable rows. Columns with checkbox selection, status badges, inline editing, drawer row viewer.",
+    internalDemo: true,
   },
   {
     name: "Calendar · single",
@@ -65,6 +129,14 @@ const blocks: readonly Block[] = [
     category: "Data viz",
     path: "src/components/chart-area-default.tsx",
     description: "Smooth area chart backed by Recharts with tooltip + legend.",
+    internalDemo: true,
+  },
+  {
+    name: "Chart · area (interactive)",
+    id: "chart-area-interactive",
+    category: "Data viz",
+    path: "src/components/chart-area-interactive.tsx",
+    description: "Interactive time-range area chart with Select + ToggleGroup window controls.",
     internalDemo: true,
   },
   {
@@ -101,7 +173,7 @@ const blocks: readonly Block[] = [
   },
 ];
 
-const categoryOrder = ["Application", "Navigation", "Auth", "Date", "Data viz"] as const;
+const categoryOrder = ["Application", "Navigation", "Auth", "Data", "Date", "Data viz"] as const;
 
 export default function BlocksPage() {
   const byCategory = categoryOrder.map((cat) => ({

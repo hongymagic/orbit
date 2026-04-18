@@ -12,11 +12,26 @@ import { Topbar } from "@/components/layout/topbar";
 import { Page, PageHead } from "@/components/layout/page-shell";
 import { Card, CardBody, CardHead } from "@/components/orbit/card";
 
+import {
+  AppSidebarDemo,
+  ChartAreaInteractiveDemo,
+  DataTableDemo,
+  LoginFormDemo,
+  SearchFormDemo,
+  SectionCardsDemo,
+  SettingsDialogDemo,
+  SiteHeaderDemo,
+  TeamSwitcherDemo,
+  VersionSwitcherDemo,
+} from "./block-frames";
+
 type BlockRenderer = {
   title: string;
   id: string;
   path: string;
   component: React.ComponentType;
+  /** Disable centering/padding when the block manages its own frame. */
+  fullBleed?: boolean;
 };
 
 const blockMap: Record<string, BlockRenderer> = {
@@ -37,6 +52,13 @@ const blockMap: Record<string, BlockRenderer> = {
     id: "chart-area-default",
     path: "src/components/chart-area-default.tsx",
     component: ChartAreaDefault,
+  },
+  "chart-area-interactive": {
+    title: "Chart · area (interactive)",
+    id: "chart-area-interactive",
+    path: "src/components/chart-area-interactive.tsx",
+    component: ChartAreaInteractiveDemo,
+    fullBleed: true,
   },
   "chart-bar-interactive": {
     title: "Chart · bar (interactive)",
@@ -61,6 +83,67 @@ const blockMap: Record<string, BlockRenderer> = {
     id: "chart-radial-simple",
     path: "src/components/chart-radial-simple.tsx",
     component: ChartRadialSimple,
+  },
+  "app-sidebar": {
+    title: "AppSidebar",
+    id: "app-sidebar",
+    path: "src/components/app-sidebar.tsx",
+    component: AppSidebarDemo,
+    fullBleed: true,
+  },
+  "site-header": {
+    title: "SiteHeader",
+    id: "site-header",
+    path: "src/components/site-header.tsx",
+    component: SiteHeaderDemo,
+    fullBleed: true,
+  },
+  "section-cards": {
+    title: "SectionCards",
+    id: "section-cards",
+    path: "src/components/section-cards.tsx",
+    component: SectionCardsDemo,
+    fullBleed: true,
+  },
+  "settings-dialog": {
+    title: "SettingsDialog",
+    id: "settings-dialog",
+    path: "src/components/settings-dialog.tsx",
+    component: SettingsDialogDemo,
+  },
+  "search-form": {
+    title: "SearchForm",
+    id: "search-form",
+    path: "src/components/search-form.tsx",
+    component: SearchFormDemo,
+    fullBleed: true,
+  },
+  "team-switcher": {
+    title: "TeamSwitcher",
+    id: "team-switcher",
+    path: "src/components/team-switcher.tsx",
+    component: TeamSwitcherDemo,
+    fullBleed: true,
+  },
+  "version-switcher": {
+    title: "VersionSwitcher",
+    id: "version-switcher",
+    path: "src/components/version-switcher.tsx",
+    component: VersionSwitcherDemo,
+    fullBleed: true,
+  },
+  "login-01": {
+    title: "Login",
+    id: "login-01",
+    path: "src/components/login-form.tsx",
+    component: LoginFormDemo,
+  },
+  "data-table": {
+    title: "DataTable (shadcn)",
+    id: "data-table",
+    path: "src/components/data-table.tsx",
+    component: DataTableDemo,
+    fullBleed: true,
   },
 };
 
@@ -87,7 +170,7 @@ export default async function BlockDemoPage({ params }: { params: Promise<{ bloc
         <Card>
           <CardHead title="Live" sub={entry.path} />
           <CardBody>
-            <div className="p-4 flex justify-center">
+            <div className={entry.fullBleed ? "" : "p-4 flex justify-center"}>
               <Demo />
             </div>
           </CardBody>

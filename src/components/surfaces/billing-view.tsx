@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Icon } from "@/components/icons";
+import { usageApril } from "@/data/usage";
 
 const tiers = [
   {
@@ -108,14 +109,13 @@ export function BillingView() {
 
       <section>
         <h2 className="text-[14px] font-semibold uppercase tracking-[0.08em] font-mono text-muted-foreground mb-3">
-          Usage · April 2026
+          Usage · {usageApril.period}
         </h2>
         <Card>
           <CardContent className="pt-6 space-y-5">
-            <UsageBar label="Deployments" used={842} cap={2000} unit="" />
-            <UsageBar label="Preview envs" used={14} cap={20} unit="" />
-            <UsageBar label="Build minutes" used={1_240} cap={5_000} unit="min" />
-            <UsageBar label="Edge bandwidth" used={128} cap={500} unit="GB" />
+            {usageApril.metrics.map((m) => (
+              <UsageBar key={m.key} label={m.label} used={m.used} cap={m.cap} unit={m.unit} />
+            ))}
           </CardContent>
         </Card>
       </section>

@@ -19,7 +19,20 @@ export type IconName =
   | "x"
   | "play"
   | "globe"
-  | "fn";
+  | "fn"
+  | "info"
+  | "alert"
+  | "clock"
+  | "rocket"
+  | "code"
+  | "terminal"
+  | "trash"
+  | "edit"
+  | "copy"
+  | "refresh"
+  | "ext"
+  | "arrow-up"
+  | "arrow-down";
 
 const paths: Record<IconName, React.ReactNode> = {
   dash: (
@@ -97,6 +110,61 @@ const paths: Record<IconName, React.ReactNode> = {
     </>
   ),
   fn: <path d="M3 3l2 10 3-8 3 5 2-4" />,
+  info: (
+    <>
+      <circle cx="8" cy="8" r="6" />
+      <path d="M8 7.5v4M8 5v.5" />
+    </>
+  ),
+  alert: (
+    <>
+      <path d="M8 2l6.5 11h-13z" />
+      <path d="M8 6.5v3.5M8 12v.5" />
+    </>
+  ),
+  clock: (
+    <>
+      <circle cx="8" cy="8" r="6" />
+      <path d="M8 4.5V8l2.5 1.5" />
+    </>
+  ),
+  rocket: (
+    <>
+      <path d="M10.5 2.5c-2.5 0-4.5 2-6 4L3 7l2 2 2 2 .5-1.5c2-1.5 4-3.5 4-6L10.5 2.5z" />
+      <path d="M6 10l-2 2 .5 1.5L6 13M9 7a1 1 0 100-2 1 1 0 000 2z" />
+    </>
+  ),
+  code: <path d="M5 4l-3 4 3 4M11 4l3 4-3 4M9.5 3l-3 10" />,
+  terminal: (
+    <>
+      <rect x="2" y="3" width="12" height="10" rx="1.5" />
+      <path d="M5 7l2 1.5L5 10M8.5 10h3" />
+    </>
+  ),
+  trash: (
+    <>
+      <path d="M3 5h10M5.5 5V3h5v2M5 5l.5 9h5L11 5M7 8v3M9 8v3" />
+    </>
+  ),
+  edit: <path d="M2.5 13.5L3 11l7-7 2.5 2.5-7 7-2.5.5zM9 5l2 2" />,
+  copy: (
+    <>
+      <rect x="5" y="5" width="9" height="9" rx="1" />
+      <path d="M11 5V3a1 1 0 00-1-1H3a1 1 0 00-1 1v7a1 1 0 001 1h2" />
+    </>
+  ),
+  refresh: (
+    <>
+      <path d="M13.5 8a5.5 5.5 0 11-1.6-3.9M13.5 2.5V5h-2.5" />
+    </>
+  ),
+  ext: (
+    <>
+      <path d="M6 3H3v10h10v-3M9 3h4v4M8 8l5-5" />
+    </>
+  ),
+  "arrow-up": <path d="M8 13V3M4 7l4-4 4 4" />,
+  "arrow-down": <path d="M8 3v10M4 9l4 4 4-4" />,
 };
 
 const filled: Set<IconName> = new Set(["play"]);

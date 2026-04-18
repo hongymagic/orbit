@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
+
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/icons";
 import { useCommandPalette } from "@/components/command-palette/command-palette";
 
 import { BrandMark } from "./brand-mark";
+import { NotificationsPanel } from "./notifications-panel";
 import { Button } from "@/components/orbit/button";
 import { Kbd } from "@/components/orbit/kbd";
 
@@ -28,7 +31,10 @@ export function Topbar({
   hideDeploy?: boolean;
 }) {
   const { setOpen } = useCommandPalette();
+  const [notifOpen, setNotifOpen] = useState(false);
   const handleOpenSearch = onOpenSearch ?? (() => setOpen(true));
+  const handleOpenNotifications = onOpenNotifications ?? (() => setNotifOpen(true));
+
   return (
     <div
       className="sticky top-0 z-10 flex items-center gap-3 px-5 bg-bg shadow-[0_1px_0_var(--color-line)]"
@@ -71,7 +77,7 @@ export function Topbar({
         variant="ghost"
         iconOnly
         size="md"
-        onClick={onOpenNotifications}
+        onClick={handleOpenNotifications}
         aria-label="Notifications"
       >
         <Icon name="bell" />
@@ -84,6 +90,10 @@ export function Topbar({
           Deploy
         </Button>
       ) : null}
+
+      {onOpenNotifications ? null : (
+        <NotificationsPanel open={notifOpen} onOpenChange={setNotifOpen} />
+      )}
     </div>
   );
 }
