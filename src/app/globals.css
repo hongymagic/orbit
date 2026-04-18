@@ -91,6 +91,19 @@
   /* layout constants */
   --sidebar-w: 240px;
   --topbar-h: 52px;
+
+  /* Spacing scale (8pt base with fine steps). Available as arbitrary Tailwind
+     values: `p-[var(--s-4)]`, `gap-[var(--s-3)]`, or referenced from CSS. */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
 }
 
 /* ============================================================

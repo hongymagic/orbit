@@ -6,6 +6,7 @@ import { useCommandPalette } from "@/components/command-palette/command-palette"
 
 import { BrandMark } from "./brand-mark";
 import { Button } from "@/components/orbit/button";
+import { Kbd } from "@/components/orbit/kbd";
 
 export type BreadcrumbEntry = string | { label: string; href?: string };
 
@@ -63,9 +64,7 @@ export function Topbar({
       >
         <Icon name="search" />
         <span>{searchHint}</span>
-        <kbd className="ml-auto font-mono text-[10px] px-1.5 py-0.5 rounded-xs text-fg-subtle shadow-[inset_0_0_0_1px_var(--color-line)]">
-          ⌘K
-        </kbd>
+        <Kbd className="ml-auto">⌘K</Kbd>
       </button>
 
       <Button

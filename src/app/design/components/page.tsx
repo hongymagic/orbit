@@ -5,6 +5,7 @@ import { Button } from "@/components/orbit/button";
 import { Badge } from "@/components/orbit/badge";
 import { Metric, MetricGrid } from "@/components/orbit/metric";
 import { Sparkline } from "@/components/orbit/sparkline";
+import { Kbd } from "@/components/orbit/kbd";
 import { Icon, iconNames } from "@/components/icons";
 import { Pipeline, PipelineArrow, PipelineStep } from "@/components/data/pipeline";
 import { Activity } from "@/components/data/activity";
@@ -155,6 +156,22 @@ export default function ComponentsPage() {
           description="Monospace log stream with level coloring. Fixed grid columns."
         >
           <Console entries={buildLogs.slice(0, 6)} maxHeight={220} />
+        </Section>
+
+        <Section
+          title="Kbd"
+          path="src/components/orbit/kbd.tsx"
+          description="Keyboard-shortcut hint. 10px mono, fg-subtle, inset line ring."
+        >
+          <div className="flex items-center gap-3 flex-wrap">
+            <Kbd>⌘K</Kbd>
+            <Kbd>⌘.</Kbd>
+            <Kbd>⇧⌘Q</Kbd>
+            <Kbd>Enter</Kbd>
+            <Kbd>Esc</Kbd>
+            <Kbd>j</Kbd>
+            <Kbd>k</Kbd>
+          </div>
         </Section>
 
         <Section

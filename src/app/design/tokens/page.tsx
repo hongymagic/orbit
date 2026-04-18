@@ -35,6 +35,19 @@ const shadows = [
   { name: "shadow-card-lifted", sample: "card + 0 8px 16px -8px rgb(0 0 0/0.06)" },
 ];
 
+const spacing = [
+  { name: "s-1", value: "4px" },
+  { name: "s-2", value: "8px" },
+  { name: "s-3", value: "12px" },
+  { name: "s-4", value: "16px" },
+  { name: "s-5", value: "20px" },
+  { name: "s-6", value: "24px" },
+  { name: "s-8", value: "32px" },
+  { name: "s-10", value: "40px" },
+  { name: "s-12", value: "48px" },
+  { name: "s-16", value: "64px" },
+];
+
 const typeScale = [
   { role: "h1", sample: "Display · 28/1.15 · -0.03em", className: "text-h1" },
   { role: "h2", sample: "Section · 20/1.2 · -0.02em", className: "text-h2" },
@@ -136,6 +149,36 @@ export default function TokensPage() {
                   </div>
                 </div>
               ))}
+            </CardBody>
+          </Card>
+        </div>
+
+        <div className="mt-4">
+          <Card>
+            <CardHead
+              title="Spacing scale"
+              sub="Available as var(--s-N) or arbitrary Tailwind values like p-[var(--s-4)]"
+            />
+            <CardBody>
+              <div
+                className="grid gap-3"
+                style={{ gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}
+              >
+                {spacing.map((s) => (
+                  <div key={s.name} className="flex items-center gap-3">
+                    <div className="flex items-end shrink-0 h-10">
+                      <div
+                        className="bg-accent shadow-[inset_0_0_0_1px_var(--color-line)]"
+                        style={{ width: s.value, height: s.value }}
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-mono text-[12px] truncate">--{s.name}</div>
+                      <div className="text-[11px] text-fg-subtle">{s.value}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </CardBody>
           </Card>
         </div>

@@ -30,7 +30,8 @@ export function Sparkline({
   const areaD = area ? `M 0,${height} L ${line.replace(/ /g, " L ")} L ${width},${height} Z` : null;
   return (
     <svg
-      className={cn("opacity-60", className)}
+      className={cn(className)}
+      style={{ opacity: 0.55 }}
       viewBox={`0 0 ${width} ${height}`}
       width={width}
       height={height}
