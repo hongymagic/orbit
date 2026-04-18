@@ -20,6 +20,7 @@ export const designNav: readonly DesignNavSection[] = [
       { key: "index",      label: "Overview",   icon: "dash",     href: "/_design" },
       { key: "tokens",     label: "Tokens",     icon: "settings", href: "/_design/tokens" },
       { key: "components", label: "Components", icon: "cmd",      href: "/_design/components" },
+      { key: "blocks",     label: "Blocks",     icon: "db",       href: "/_design/blocks" },
     ],
   },
   {
