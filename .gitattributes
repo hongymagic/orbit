@@ -1,0 +1,21 @@
+# Mark vendored code as generated so GitHub collapses diffs and Linguist
+# excludes them from language stats. These directories are installed via
+# `shadcn add` and `ai-elements add`; edit their upstream sources and
+# re-run the CLIs, don't modify in place.
+
+src/components/ai-elements/** linguist-generated=true
+src/components/ui/**          linguist-generated=true
+src/components/app-sidebar.tsx linguist-generated=true
+src/components/nav-*.tsx       linguist-generated=true
+src/components/chart-*.tsx     linguist-generated=true
+src/components/calendar-*.tsx  linguist-generated=true
+src/components/data-table.tsx  linguist-generated=true
+src/components/login-form.tsx  linguist-generated=true
+src/components/search-form.tsx linguist-generated=true
+src/components/section-cards.tsx linguist-generated=true
+src/components/settings-dialog.tsx linguist-generated=true
+src/components/site-header.tsx linguist-generated=true
+src/components/team-switcher.tsx linguist-generated=true
+src/components/version-switcher.tsx linguist-generated=true
+
+bun.lock binary

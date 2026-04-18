@@ -1,0 +1,76 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "nextjs", "typescript", "jsx-a11y", "import", "unicorn", "oxc"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "settings": {
+    "react": { "version": "19.2.4" }
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist",
+    "build",
+    "coverage",
+    "_reference",
+    "src/components/ai-elements",
+    "src/components/ui",
+    "src/components/app-sidebar.tsx",
+    "src/components/chart-*.tsx",
+    "src/components/calendar-*.tsx",
+    "src/components/data-table.tsx",
+    "src/components/login-form.tsx",
+    "src/components/nav-*.tsx",
+    "src/components/search-form.tsx",
+    "src/components/section-cards.tsx",
+    "src/components/settings-dialog.tsx",
+    "src/components/site-header.tsx",
+    "src/components/team-switcher.tsx",
+    "src/components/version-switcher.tsx",
+    "src/app/dashboard/**",
+    "src/app/login/**",
+    "next-env.d.ts",
+    "*.min.js"
+  ],
+  "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "typescript/no-explicit-any": "warn",
+    "react/jsx-key": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "import/no-default-export": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-ternary": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/numeric-separators-style": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/no-nested-ternary": "off",
+    "unicorn/prefer-spread": "off",
+    "unicorn/prefer-string-replace-all": "off",
+    "unicorn/prefer-top-level-await": "off",
+    "unicorn/prefer-number-properties": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
+      "rules": {
+        "typescript/no-explicit-any": "off",
+        "no-console": "off"
+      }
+    }
+  ]
+}

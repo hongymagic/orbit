@@ -58,7 +58,7 @@ export function DataTable<T>({
       <tbody>
         {rows.map((row, i) => (
           <tr key={rowKey(row, i)} className="transition-colors hover:bg-bg-subtle">
-            {columns.map((col, ci) => (
+            {columns.map((col) => (
               <td
                 key={col.key}
                 className={cn(

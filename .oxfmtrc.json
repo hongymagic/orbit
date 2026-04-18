@@ -1,0 +1,27 @@
+{
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist",
+    "build",
+    "coverage",
+    "_reference",
+    "src/components/ai-elements",
+    "src/components/ui",
+    "src/components/app-sidebar.tsx",
+    "src/components/chart-*.tsx",
+    "src/components/calendar-*.tsx",
+    "src/components/data-table.tsx",
+    "src/components/login-form.tsx",
+    "src/components/nav-*.tsx",
+    "src/components/search-form.tsx",
+    "src/components/section-cards.tsx",
+    "src/components/settings-dialog.tsx",
+    "src/components/site-header.tsx",
+    "src/components/team-switcher.tsx",
+    "src/components/version-switcher.tsx",
+    "bun.lock",
+    "*.min.*"
+  ]
+}

@@ -1,0 +1,24 @@
+# Git hooks for Orbit. Auto-installed via `bun install` (prepare script).
+# Skip temporarily:  LEFTHOOK=0 git commit …   or   git commit --no-verify
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{js,jsx,ts,tsx,json,jsonc,css,md,yml,yaml}"
+      run: bunx oxfmt {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{js,jsx,ts,tsx}"
+      run: bunx oxlint --fix {staged_files}
+      stage_fixed: true
+
+pre-push:
+  parallel: false
+  commands:
+    typecheck:
+      run: bunx tsc --noEmit
+    lint-all:
+      run: bunx oxlint
+    build:
+      run: bun run build

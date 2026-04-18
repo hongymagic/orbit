@@ -9,7 +9,7 @@ import { Badge } from "@/components/orbit/badge";
 import { Button } from "@/components/orbit/button";
 import { Card, CardBody, CardHead } from "@/components/orbit/card";
 import { Metric, MetricGrid } from "@/components/orbit/metric";
-import { Grid, GridSplit, Page, PageHead } from "@/components/layout/page-shell";
+import { GridSplit, Page, PageHead } from "@/components/layout/page-shell";
 
 import { activityToday } from "@/data/activity";
 import { buildLogs } from "@/data/logs";
@@ -17,7 +17,10 @@ import { deployments, statusLabel, type Deployment } from "@/data/deployments";
 import { sparkBranches, sparkBuild, sparkDeployments, sparkUptime } from "@/data/sparks";
 
 const statusTone: Record<Deployment["status"], "ok" | "info" | "warn" | "err"> = {
-  ok: "ok", info: "info", warn: "warn", err: "err",
+  ok: "ok",
+  info: "info",
+  warn: "warn",
+  err: "err",
 };
 
 const columns: readonly Column<Deployment>[] = [
@@ -31,17 +34,39 @@ const columns: readonly Column<Deployment>[] = [
     ),
   },
   { key: "name", header: "Project", cell: (d) => <span className="font-medium">{d.name}</span> },
-  { key: "branch", header: "Branch", cell: (d) => <span className="font-mono text-[12px] text-fg-muted">{d.branch}</span> },
-  { key: "sha", header: "Commit", cell: (d) => <span className="font-mono text-[12px] text-fg-subtle">{d.sha}</span> },
+  {
+    key: "branch",
+    header: "Branch",
+    cell: (d) => <span className="font-mono text-[12px] text-fg-muted">{d.branch}</span>,
+  },
+  {
+    key: "sha",
+    header: "Commit",
+    cell: (d) => <span className="font-mono text-[12px] text-fg-subtle">{d.sha}</span>,
+  },
   {
     key: "env",
     header: "Environment",
     cell: (d) =>
       d.env === "Production" ? <Badge>Production</Badge> : <Badge tone="info">Preview</Badge>,
   },
-  { key: "author", header: "Author", cell: (d) => <span className="text-fg-muted">{d.author}</span> },
-  { key: "duration", header: "Duration", align: "right", cell: (d) => <span className="font-mono text-fg-muted">{d.duration}</span> },
-  { key: "age", header: "Age", align: "right", cell: (d) => <span className="font-mono text-fg-subtle">{d.time}</span> },
+  {
+    key: "author",
+    header: "Author",
+    cell: (d) => <span className="text-fg-muted">{d.author}</span>,
+  },
+  {
+    key: "duration",
+    header: "Duration",
+    align: "right",
+    cell: (d) => <span className="font-mono text-fg-muted">{d.duration}</span>,
+  },
+  {
+    key: "age",
+    header: "Age",
+    align: "right",
+    cell: (d) => <span className="font-mono text-fg-subtle">{d.time}</span>,
+  },
 ];
 
 export function ConservativeView() {
@@ -64,10 +89,34 @@ export function ConservativeView() {
       />
 
       <MetricGrid>
-        <Metric label="Deployments · 7d" value="247"     delta="+18 vs prev week"  deltaDir="up" data={sparkDeployments} />
-        <Metric label="Avg build time"    value="1m 12s" delta="−9s vs prev week"  deltaDir="up" data={sparkBuild} />
-        <Metric label="Success rate"      value="99.8%"  delta="+0.2 pp"           deltaDir="up" data={sparkUptime} />
-        <Metric label="Active branches"   value="18"     delta="+2 this week"      deltaDir="up" data={sparkBranches} />
+        <Metric
+          label="Deployments · 7d"
+          value="247"
+          delta="+18 vs prev week"
+          deltaDir="up"
+          data={sparkDeployments}
+        />
+        <Metric
+          label="Avg build time"
+          value="1m 12s"
+          delta="−9s vs prev week"
+          deltaDir="up"
+          data={sparkBuild}
+        />
+        <Metric
+          label="Success rate"
+          value="99.8%"
+          delta="+0.2 pp"
+          deltaDir="up"
+          data={sparkUptime}
+        />
+        <Metric
+          label="Active branches"
+          value="18"
+          delta="+2 this week"
+          deltaDir="up"
+          data={sparkBranches}
+        />
       </MetricGrid>
 
       <div className="mt-6">
@@ -77,7 +126,9 @@ export function ConservativeView() {
             sub="Last 24 hours"
             actions={
               <>
-                <Button size="sm" variant="ghost">All environments</Button>
+                <Button size="sm" variant="ghost">
+                  All environments
+                </Button>
                 <Button size="sm" variant="ghost" iconOnly aria-label="More">
                   <Icon name="dots" />
                 </Button>
@@ -116,10 +167,16 @@ export function ConservativeView() {
                 />
               </Pipeline>
               <div className="flex items-center gap-2 mt-4">
-                <Button size="sm" variant="ghost">View checks</Button>
-                <Button size="sm" variant="ghost">Runtime config</Button>
+                <Button size="sm" variant="ghost">
+                  View checks
+                </Button>
+                <Button size="sm" variant="ghost">
+                  Runtime config
+                </Button>
                 <div className="flex-1" />
-                <Button size="sm" variant="primary">Promote to production</Button>
+                <Button size="sm" variant="primary">
+                  Promote to production
+                </Button>
               </div>
             </CardBody>
           </Card>
