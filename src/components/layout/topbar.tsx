@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/icons";
+import { useCommandPalette } from "@/components/command-palette/command-palette";
 
 import { BrandMark } from "./brand-mark";
 import { Button } from "@/components/orbit/button";
@@ -11,7 +12,7 @@ export type BreadcrumbEntry = string | { label: string; href?: string };
 export function Topbar({
   crumbs = ["atlas-web", "Deployments"],
   actions,
-  searchHint = "Search deployments, PRs, logs…",
+  searchHint = "Search, navigate, run a command…",
   onOpenSearch,
   onOpenNotifications,
   onDeploy,
@@ -25,6 +26,8 @@ export function Topbar({
   onDeploy?: () => void;
   hideDeploy?: boolean;
 }) {
+  const { setOpen } = useCommandPalette();
+  const handleOpenSearch = onOpenSearch ?? (() => setOpen(true));
   return (
     <div
       className="sticky top-0 z-10 flex items-center gap-3 px-5 bg-bg shadow-[0_1px_0_var(--color-line)]"
@@ -48,7 +51,7 @@ export function Topbar({
 
       <button
         type="button"
-        onClick={onOpenSearch}
+        onClick={handleOpenSearch}
         className={cn(
           "hidden md:flex items-center gap-2 px-2.5 py-1 rounded-sm bg-bg min-w-[280px]",
           "text-fg-muted text-[13px] cursor-text transition-shadow duration-100",

@@ -2,6 +2,7 @@
 
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { CommandPaletteProvider } from "@/components/command-palette/command-palette";
 
 import { AccentProvider } from "./accent-provider";
 import { ThemeProvider } from "./theme-provider";
@@ -20,8 +21,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <AccentProvider>
         <VariationProvider>
           <TooltipProvider delayDuration={200}>
-            {children}
-            <Toaster />
+            <CommandPaletteProvider>
+              {children}
+              <Toaster />
+            </CommandPaletteProvider>
           </TooltipProvider>
         </VariationProvider>
       </AccentProvider>

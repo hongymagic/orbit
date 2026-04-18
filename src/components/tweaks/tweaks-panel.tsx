@@ -22,6 +22,10 @@ export function TweaksPanel({ initialOpen = false }: { initialOpen?: boolean }) 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get("tweaks") === "1") setOpen(true);
+
+    const handleOpenEvent = () => setOpen(true);
+    window.addEventListener("orbit:open-tweaks", handleOpenEvent);
+    return () => window.removeEventListener("orbit:open-tweaks", handleOpenEvent);
   }, []);
 
   const { theme, setTheme } = useTheme();
