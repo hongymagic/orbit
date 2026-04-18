@@ -1,5 +1,3 @@
-"use client";
-
 import { Icon } from "@/components/icons";
 import { Activity } from "@/components/data/activity";
 import { Console } from "@/components/data/console";
@@ -11,10 +9,10 @@ import { Card, CardBody, CardHead } from "@/components/orbit/card";
 import { Metric, MetricGrid } from "@/components/orbit/metric";
 import { GridSplit, Page, PageHead } from "@/components/layout/page-shell";
 
-import { activityToday } from "@/data/activity";
 import { buildLogs } from "@/data/logs";
-import { deployments, statusLabel, type Deployment } from "@/data/deployments";
+import { statusLabel, type Deployment } from "@/data/deployments";
 import { sparkBranches, sparkBuild, sparkDeployments, sparkUptime } from "@/data/sparks";
+import { getActivity, getDeployments } from "@/integrations/db";
 
 const statusTone: Record<Deployment["status"], "ok" | "info" | "warn" | "err"> = {
   ok: "ok",
@@ -69,7 +67,9 @@ const columns: readonly Column<Deployment>[] = [
   },
 ];
 
-export function ConservativeView() {
+export async function ConservativeView() {
+  const [deployments, activity] = await Promise.all([getDeployments(), getActivity()]);
+
   return (
     <Page>
       <PageHead
@@ -183,7 +183,7 @@ export function ConservativeView() {
 
           <Card>
             <CardHead title="Activity" sub="Team · today" />
-            <Activity events={activityToday} />
+            <Activity events={activity} />
           </Card>
         </GridSplit>
       </div>
