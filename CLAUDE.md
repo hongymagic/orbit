@@ -1,10 +1,18 @@
-@AGENTS.md
-
 # Orbit — agent quickstart
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+Next.js 16 has breaking changes — APIs, conventions, and file structure may differ from what's in your training data. When in doubt, read the guide at `node_modules/next/dist/docs/` before writing code. Heed deprecation notices.
+
+<!-- END:nextjs-agent-rules -->
 
 You are working in a **Next.js 16 / Tailwind v4 / Bun / TypeScript** design-system foundation. The product hasn't been built yet — this repo is the scaffolding to build on.
 
-The authoritative design document is [`DESIGN.md`](./DESIGN.md). Read it before making any visual decisions.
+`AGENTS.md` is a symlink to this file, so tools that read either (codex, cursor, Claude Code) get the same authoritative guidance.
+
+The authoritative **design** document is [`DESIGN.md`](./DESIGN.md). Read it before making any visual decisions.
 
 ## Where to find examples
 
