@@ -14,6 +14,27 @@ You are working in a **Next.js 16 / Tailwind v4 / Bun / TypeScript** design-syst
 
 The authoritative **design** document is [`DESIGN.md`](./DESIGN.md). Read it before making any visual decisions.
 
+## Documentation map
+
+The single source of truth for where to look when you need something. Start here.
+
+| Where                                                             | What                                                               | Read when                                      |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------- |
+| [`DESIGN.md`](./DESIGN.md)                                        | Design-system spec — tokens, components, variations, philosophy    | Making any visual decision                     |
+| [`CLAUDE.md`](./CLAUDE.md) (this file)                            | Agent conventions, import rules, forbidden edits                   | Writing any code                               |
+| [`README.md`](./README.md)                                        | Quick-start, stack summary, route list                             | Onboarding                                     |
+| [`src/integrations/README.md`](./src/integrations/README.md)      | How to wire real AI / Auth / DB providers                          | Taking the template to production              |
+| [`/_design`](http://localhost:3000/_design)                       | Live design-system gallery — every pattern, rendered               | Always — this is the canonical usage reference |
+| [`/_design/tokens`](http://localhost:3000/_design/tokens)         | Live color / radius / shadow / type / spacing reference            | Picking a token value                          |
+| [`/_design/components`](http://localhost:3000/_design/components) | Orbit atoms × every variant                                        | Before writing a new atom                      |
+| [`/_design/blocks`](http://localhost:3000/_design/blocks)         | shadcn blocks catalog + live demos                                 | Before composing a new dashboard / chart       |
+| [`/_design/surfaces`](http://localhost:3000/_design/surfaces)     | Full-page patterns: auth, settings, billing, detail, empty, errors | Before writing a new page                      |
+| [`/_design/ai`](http://localhost:3000/_design/ai)                 | AI surfaces — conversation, reasoning, code                        | Building an AI feature                         |
+| [`_reference/`](./_reference/)                                    | Original vanilla-React mock — read-only archaeology                | Understanding design intent (don't import)     |
+
+**Read order for humans**: `README.md` → `DESIGN.md` → `/_design`.
+**Read order for agents**: `CLAUDE.md` → `DESIGN.md` → `/_design` (most specific to most canonical).
+
 ## Where to find examples
 
 **All example patterns live at `/_design/*`.** The pages under [`src/app/design/`](./src/app/design/) are the canonical usage demos — every component, every variant, composed the way the design system intends.

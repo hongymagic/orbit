@@ -13,8 +13,10 @@ Open [http://localhost:3000](http://localhost:3000) for the landing page, or jum
 
 ## Documentation
 
+- **[CLAUDE.md § Documentation map](./CLAUDE.md#documentation-map)** — the single index of every doc, route, and reference file. Start here.
 - **[DESIGN.md](./DESIGN.md)** — the design system spec (tokens, components, variations, philosophy).
-- **[CLAUDE.md](./CLAUDE.md)** — conventions and guardrails for coding agents working in this repo.
+- **[CLAUDE.md](./CLAUDE.md)** — conventions and guardrails for coding agents working in this repo. (Symlinked to `AGENTS.md`.)
+- **[src/integrations/README.md](./src/integrations/README.md)** — how to wire real AI / Auth / DB providers.
 - **`/_design`** (live) — every component, every variant, rendered in-place. The canonical usage reference.
 
 ## Stack

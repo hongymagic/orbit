@@ -6,6 +6,8 @@ This document is the **spec**. The implementation mirrors it exactly — if the 
 
 Live reference: run `bun dev` and open [`/_design`](http://localhost:3000/_design).
 
+> **Working on this repo?** Start with the [Documentation map in CLAUDE.md](./CLAUDE.md#documentation-map) — it tells you where every spec, route, and reference file lives.
+
 ---
 
 ## 1. Philosophy
