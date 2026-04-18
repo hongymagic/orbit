@@ -33,27 +33,49 @@ Open [http://localhost:3000](http://localhost:3000) for the landing page, or jum
 ## Scripts
 
 ```bash
-bun dev         # dev server
-bun run build   # production build
-bun run start   # serve production build
-bun run typecheck
+bun dev              # dev server
+bun run build        # production build
+bun run start        # serve production build
+bun run typecheck    # tsc --noEmit
+bun run lint         # oxlint
+bun run lint:fix     # oxlint --fix
+bun run format       # oxfmt
+bun run format:check # oxfmt --check
 ```
 
-All scripts run with `NODE_OPTIONS='--use-system-ca'` so corporate certificates and `mkcert` work without extra setup.
+Long-running scripts run with `NODE_OPTIONS='--use-system-ca'` so corporate certificates and `mkcert` work without extra setup.
+
+**Git hooks** are installed automatically via `bun install` (`prepare` script). Pre-commit runs `oxfmt` + `oxlint --fix` on staged files; pre-push runs typecheck + lint + build. Skip temporarily with `LEFTHOOK=0` or `git commit --no-verify` (but fix the underlying issue instead).
 
 ## Routes
 
-| Route                   | Purpose                           |
-| ----------------------- | --------------------------------- |
-| `/`                     | Intro / landing                   |
-| `/_design`              | Design system index               |
-| `/_design/tokens`       | Live token reference              |
-| `/_design/components`   | Every component × every variant   |
-| `/_design/conservative` | Data-dense layout variation       |
-| `/_design/confident`    | Hero-led layout variation         |
-| `/_design/experimental` | Terminal-forward layout variation |
-| `/_design/ai`           | ai-elements demo (stubbed)        |
-| `/api/chat`             | Stub chat endpoint                |
+**Product** (copy-ready real routes):
+
+| Route        | Backed by                                       |
+| ------------ | ----------------------------------------------- |
+| `/`          | Intro / landing                                 |
+| `/dashboard` | shadcn `dashboard-01` block                     |
+| `/login`     | shadcn `login-01` block                         |
+| `/signup`    | `src/components/surfaces/signup-form.tsx` (Zod) |
+| `/settings`  | `src/components/surfaces/settings-view.tsx`     |
+| `/billing`   | `src/components/surfaces/billing-view.tsx`      |
+| `/api/chat`  | Mocked streaming chat endpoint (SSE)            |
+
+**Design system reference** (gallery):
+
+| Route                   | Purpose                                               |
+| ----------------------- | ----------------------------------------------------- |
+| `/_design`              | Index                                                 |
+| `/_design/tokens`       | Live color / radius / shadow / type reference         |
+| `/_design/components`   | Orbit atoms + composites, every variant               |
+| `/_design/blocks`       | shadcn blocks catalog + live demos                    |
+| `/_design/conservative` | Data-dense layout variation                           |
+| `/_design/confident`    | Hero-led layout variation                             |
+| `/_design/experimental` | Terminal-forward layout variation                     |
+| `/_design/surfaces`     | Signup / Settings / Billing / Empty / Errors / Detail |
+| `/_design/ai`           | Conversation + PromptInput demo                       |
+| `/_design/ai/reasoning` | ChainOfThought + Reasoning + Task                     |
+| `/_design/ai/code`      | FileTree + CodeBlock + Terminal                       |
 
 `/_design` is rewritten to `/design` on disk — both resolve, but `/_design` is canonical (prefixed to signal "internal reference, not product surface").
 
