@@ -12,7 +12,7 @@
     "es2024": true
   },
   "settings": {
-    "react": { "version": "19.2.4" }
+    "react": { "version": "19.2.5" }
   },
   "ignorePatterns": [
     "node_modules",

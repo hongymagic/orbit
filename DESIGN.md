@@ -6,7 +6,7 @@ This document is the **spec**. The implementation mirrors it exactly — if the 
 
 Live reference: run `bun dev` and open [`/_design`](http://localhost:3000/_design).
 
-> **Working on this repo?** Start with the [Documentation map in CLAUDE.md](./CLAUDE.md#documentation-map) — it tells you where every spec, route, and reference file lives.
+> **Working on this repo?** Start with the [Where to look map in CLAUDE.md](./CLAUDE.md#where-to-look) — it tells you where every spec, route, and reference file lives.
 
 ---
 
@@ -14,7 +14,7 @@ Live reference: run `bun dev` and open [`/_design`](http://localhost:3000/_desig
 
 ### Shadow-as-border
 
-Every visual boundary in Orbit is a **box-shadow**, not a CSS `border`. The canonical recipe:
+Every visual boundary in Orbit is a **box-shadow**, not a CSS `border`. Canonical recipe:
 
 ```
 box-shadow: 0 0 0 1px var(--color-line);            /* ring */
@@ -28,7 +28,7 @@ Cards layer shadow-as-border with ambient softness:
 --shadow-card-lifted: 0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.03), 0 8px 16px -8px rgb(0 0 0 / 0.06);
 ```
 
-**Why not `border`?** Borders participate in the box model (adding pixels, affecting `calc`, clipping children at rounded corners). Shadows don't — they render in their own layer, transition cleanly, and let children occupy the full radius without clipping. Use `border` only when you explicitly need the box-model effect.
+**Why not `border`?** Borders participate in the box model (adding pixels, affecting `calc`, clipping children at rounded corners). Shadows render in their own layer, transition cleanly, and let children occupy the full radius without clipping. Use `border` only when you explicitly need the box-model effect.
 
 ### Token-driven
 
@@ -41,10 +41,16 @@ The same component library renders three distinct surface aesthetics:
 | Variation        | Intent                                        | When to use                                                    |
 | ---------------- | --------------------------------------------- | -------------------------------------------------------------- |
 | **Conservative** | Data-dense, table-first, familiar             | Default for operational surfaces (deployments, logs, settings) |
-| **Confident**    | Hero-led, bold type, marketing-adjacent       | Overview, onboarding, upsell surfaces                          |
+| **Confident**    | Hero-led, bold type, marketing-adjacent       | Overview, onboarding, upsell                                   |
 | **Experimental** | Mono-forward, terminal-esque, brutalist table | Oncall, incident, infra-surface ops                            |
 
-Switch variation with the **Tweaks** panel (⌘.) or by setting `data-variation="…"` on a wrapping element. Variation-specific CSS is in `globals.css` under `[data-variation="…"] { … }`.
+Switch via the **Tweaks** panel (⌘.) or by setting `data-variation="…"` on a wrapping element. Variation CSS lives in `globals.css` under `[data-variation="…"] { … }` — components render tokens only, never branch on variation. Keep that separation.
+
+```tsx
+<VariationScope variation="experimental">
+  <YourPage />
+</VariationScope>
+```
 
 ---
 
@@ -54,7 +60,7 @@ Source: [`src/app/globals.css`](./src/app/globals.css).
 
 ### Colors
 
-Neutrals — the only hues that form UI chrome:
+Neutrals — the only hues in UI chrome:
 
 | Token                 | Light             | Dark                    | Use                            |
 | --------------------- | ----------------- | ----------------------- | ------------------------------ |
@@ -69,7 +75,7 @@ Neutrals — the only hues that form UI chrome:
 | `--color-line-strong` | `rgb(0 0 0/0.14)` | `rgb(255 255 255/0.14)` | Hover/focus ring               |
 | `--color-line-subtle` | `rgb(0 0 0/0.04)` | `rgb(255 255 255/0.04)` | Row divider                    |
 
-**Accent** — swappable at runtime. The only non-neutral color in the main UI chrome:
+**Accent** — swappable at runtime; the only non-neutral in main UI chrome:
 
 | Token                   | Value               | Use                                         |
 | ----------------------- | ------------------- | ------------------------------------------- |
@@ -79,9 +85,9 @@ Neutrals — the only hues that form UI chrome:
 | `--color-accent-soft-2` | `color-mix(…16%)`   | Selection highlight                         |
 | `--color-accent-ring`   | `color-mix(…30%)`   | Focus ring                                  |
 
-Use `AccentProvider` or the Tweaks panel to change `--color-accent` globally. Preset swatches live in [`src/providers/accent-provider.tsx`](./src/providers/accent-provider.tsx) (`ACCENTS`).
+Change globally via `AccentProvider` or the Tweaks panel. Presets: [`src/providers/accent-provider.tsx`](./src/providers/accent-provider.tsx) (`ACCENTS`).
 
-**Workflow colors** — only used inside the `Pipeline` component:
+**Workflow colors** — only inside the `Pipeline` component:
 
 | Token             | Value     | Stage   |
 | ----------------- | --------- | ------- |
@@ -119,13 +125,9 @@ Use `AccentProvider` or the Tweaks panel to change `--color-accent` globally. Pr
 
 ### Typography
 
-Fonts are wired in [`src/app/layout.tsx`](./src/app/layout.tsx) via `geist/font/sans` and `geist/font/mono`, exposed as `--font-geist-sans` and `--font-geist-mono`, picked up by `--font-sans` / `--font-mono` tokens.
+Fonts are wired in [`src/app/layout.tsx`](./src/app/layout.tsx) via `geist/font/sans` and `geist/font/mono`, exposed as `--font-geist-sans` / `--font-geist-mono`, picked up by `--font-sans` / `--font-mono`.
 
-Three weights only: **400** (body), **500** (UI), **600** (headings). Never 700.
-
-OpenType features on globally: `"liga"`, `"calt"`, `"ss01"`. Base tracking: `-0.01em`.
-
-Type utilities (in `globals.css`):
+Three weights only: **400** (body), **500** (UI), **600** (headings). Never 700. OpenType features on globally: `"liga"`, `"calt"`, `"ss01"`. Base tracking: `-0.01em`.
 
 | Utility             | Spec                                     |
 | ------------------- | ---------------------------------------- |
@@ -141,7 +143,7 @@ Letter-spacing scales inversely with size. At display sizes (44px+), push to `-0
 
 ## 3. Component inventory
 
-**Orbit atoms** — no Radix dependency, tokens-only, opinionated 4-variant APIs:
+**Orbit atoms** — no Radix, tokens-only, opinionated 4-variant APIs:
 
 | Component                        | Path                                 | Variants                                                           |
 | -------------------------------- | ------------------------------------ | ------------------------------------------------------------------ |
@@ -151,47 +153,23 @@ Letter-spacing scales inversely with size. At display sizes (44px+), push to `-0
 | `Sparkline`                      | `src/components/orbit/sparkline.tsx` | `area`, custom `color`                                             |
 | `Metric` / `MetricGrid`          | `src/components/orbit/metric.tsx`    | `withGridBg` (experimental variation)                              |
 
-**Layout** — app shell + composition:
-
-| Component              | Path                                                                           |
-| ---------------------- | ------------------------------------------------------------------------------ |
-| `Sidebar`              | `src/components/layout/sidebar.tsx`                                            |
-| `DesignSidebar`        | `src/components/layout/design-sidebar.tsx` — `/_design` navigation only        |
-| `Topbar`               | `src/components/layout/topbar.tsx`                                             |
-| `AppShell`             | `src/components/layout/page-shell.tsx`                                         |
-| `Page` / `PageHead`    | `src/components/layout/page-shell.tsx`                                         |
-| `Grid` / `GridSplit`   | `src/components/layout/page-shell.tsx`                                         |
-| `VariationScope`       | `src/components/layout/page-shell.tsx` — wraps a subtree with `data-variation` |
-| `BrandMark` / `Avatar` | `src/components/layout/brand-mark.tsx`                                         |
+**Layout** — app shell + composition (`src/components/layout/`): `Sidebar`, `DesignSidebar` (for `/_design`), `Topbar`, `AppShell`, `Page` / `PageHead`, `Grid` / `GridSplit`, `VariationScope`, `BrandMark` / `Avatar`.
 
 **Data / composites** — domain-neutral building blocks:
 
 | Component                                     | Path                                   | Notes                                                |
 | --------------------------------------------- | -------------------------------------- | ---------------------------------------------------- |
-| `DataTable<T>`                                | `src/components/data/data-table.tsx`   | Generic column definitions, `mono` + `dense` modes   |
+| `DataTable<T>`                                | `src/components/data/data-table.tsx`   | Generic column defs, `mono` + `dense` modes          |
 | `Pipeline` / `PipelineStep` / `PipelineArrow` | `src/components/data/pipeline.tsx`     | `stage` prop enforces workflow colors                |
 | `Console` / `LogRow`                          | `src/components/data/console.tsx`      | Typed `LogLevel` union                               |
 | `Activity`                                    | `src/components/data/activity.tsx`     | Avatar + actor + verb + object + time                |
 | `CodeSnippet`                                 | `src/components/data/code-snippet.tsx` | Static code block, inline `.code-c/-k/-s/-n` classes |
 
-**shadcn primitives** — Radix-backed interactive components, restyled via the token bridge in `globals.css` (`--color-background` → `--color-bg`, etc.).
+**shadcn primitives** — Radix-backed, restyled via the token bridge in `globals.css` (`--color-background` → `--color-bg`, …). Location: [`src/components/ui/`](./src/components/ui/). Covers Dialog, Popover, DropdownMenu, Tabs, Tooltip, Command, ScrollArea, Sheet, Select, Avatar, Collapsible, Combobox, and AI-specific primitives (ButtonGroup, InputGroup, HoverCard, Spinner, Kbd, …). Also contains shadcn's own `Button`/`Badge`/`Card` — used internally by blocks and ai-elements. Product code picks between these (flexible shadcn API) and Orbit's (opinionated 4-variant API) by use case.
 
-- Location: [`src/components/ui/`](./src/components/ui/) — **canonical shadcn alias** (follows upstream docs)
-- Used for: Dialog, Popover, DropdownMenu, Tabs, Tooltip, Command, ScrollArea, Sheet, Select, Avatar, Collapsible, Combobox, and AI-specific primitives (ButtonGroup, InputGroup, HoverCard, Spinner, Kbd, etc.)
-- Also contains shadcn's own `Button`/`Badge`/`Card` — used by blocks and ai-elements internally. Product code chooses between these (flexible, shadcn API) and Orbit's (opinionated 4-variant API) depending on the use case.
+**ai-elements** — Vercel's AI UI kit, vendored at [`src/components/ai-elements/`](./src/components/ai-elements/). 48 components covering Conversation, Message, PromptInput, CodeBlock, Tool, Artifact, Sandbox, Terminal, etc. All compose shadcn primitives, so they inherit Orbit tokens automatically.
 
-**ai-elements** — Vercel's AI UI kit, vendored:
-
-- Location: [`src/components/ai-elements/`](./src/components/ai-elements/)
-- 48 components covering Conversation, Message, PromptInput, CodeBlock, Tool, Artifact, Sandbox, Terminal, etc.
-- All of them compose shadcn primitives, so they inherit Orbit tokens automatically.
-
-**Icons**:
-
-- Registry: [`src/components/icons.tsx`](./src/components/icons.tsx)
-- 18 bespoke 16×16 stroke icons — typed `IconName` union
-- Usage: `<Icon name="deploy" />` — never inline SVG in components
-- To add: append to `paths` record, extend `IconName` union, re-run `bun run typecheck`
+**Icons** — [`src/components/icons.tsx`](./src/components/icons.tsx). 18 bespoke 16×16 stroke icons with `IconName` union. Usage: `<Icon name="deploy" />` — never inline SVG in components. To add: append to `paths` record, extend the union, re-run typecheck.
 
 ---
 
@@ -199,84 +177,34 @@ Letter-spacing scales inversely with size. At display sizes (44px+), push to `-0
 
 Three independent providers, composed in [`src/providers/index.tsx`](./src/providers/index.tsx):
 
-| Provider            | Controls                                              | Storage key       | Hotkey |
-| ------------------- | ----------------------------------------------------- | ----------------- | ------ |
-| `ThemeProvider`     | `data-theme` on `<html>` + `color-scheme`             | `orbit:theme`     | —      |
-| `AccentProvider`    | `--color-accent` on `<html>`                          | `orbit:accent`    | —      |
-| `VariationProvider` | Returns `variation` to consumers (e.g. `TweaksPanel`) | `orbit:variation` | —      |
+| Provider            | Controls                                              | Storage key       |
+| ------------------- | ----------------------------------------------------- | ----------------- |
+| `ThemeProvider`     | `data-theme` on `<html>` + `color-scheme`             | `orbit:theme`     |
+| `AccentProvider`    | `--color-accent` on `<html>`                          | `orbit:accent`    |
+| `VariationProvider` | Returns `variation` to consumers (e.g. `TweaksPanel`) | `orbit:variation` |
 
-Each provider emits a **no-flash script** (`ThemeNoFlashScript`, `AccentNoFlashScript`) that runs before hydration to set the right values on `<html>`, so first paint never shows the wrong theme.
+Each provider emits a **no-flash script** (`ThemeNoFlashScript`, `AccentNoFlashScript`) that runs before hydration — first paint never shows the wrong theme.
 
-The Tweaks panel lives at [`src/components/tweaks/tweaks-panel.tsx`](./src/components/tweaks/tweaks-panel.tsx). Toggle with **⌘.** or `?tweaks=1` query param.
+The Tweaks panel: [`src/components/tweaks/tweaks-panel.tsx`](./src/components/tweaks/tweaks-panel.tsx). Toggle with **⌘.** or `?tweaks=1`.
 
 ---
 
 ## 5. Routes
 
-The app exposes two kinds of surfaces:
+Product vs design-reference split is documented in [`README.md § Routes`](./README.md#routes). Key rule: `/_design/*` is the internal gallery (canonical usage examples, backed by `src/app/design/`); product routes live directly under `src/app/`. Copy a surface from `src/components/surfaces/*` into a product route — it just works.
 
-### `/` — Landing
-
-Simple intro page pointing at `/_design`. Replace this when you start building the real product.
-
-### `/_design/*` — Design reference
-
-Internal design-system gallery for agents and humans. Backed by `src/app/design/` on disk; `next.config.ts` rewrites `/_design/*` → `/design/*`.
-
-| Path                    | Purpose                                                               |
-| ----------------------- | --------------------------------------------------------------------- |
-| `/_design`              | Index of all sections                                                 |
-| `/_design/tokens`       | Live token reference (colors, radii, shadows, type scale)             |
-| `/_design/components`   | Every atom + composite rendered in every variant                      |
-| `/_design/conservative` | Deployments page — table, pipeline, activity, build output            |
-| `/_design/confident`    | Overview page — hero, metric panel, service table, quickstart, uptime |
-| `/_design/experimental` | Ops page — brutalist table, runtime logs, routes                      |
-| `/_design/ai`           | Conversation + PromptInput + CodeBlock demo (stubbed)                 |
-
-**Every `/_design` page sources real components from `src/components/` and real (mock) data from `src/data/`.** They are the canonical usage examples — copy the patterns into product surfaces.
-
-### `/api/chat`
-
-Stub endpoint ([`src/app/api/chat/route.ts`](./src/app/api/chat/route.ts)). Returns 501. Wire to a real provider via the AI SDK when you need streaming.
+`/api/chat` ([`src/app/api/chat/route.ts`](./src/app/api/chat/route.ts)) is a stub that returns 501. Wire to a real provider via `@/integrations/ai` (see [`src/integrations/README.md`](./src/integrations/README.md)).
 
 ---
 
-## 6. Variations in practice
-
-A variation is a data attribute:
-
-```tsx
-<VariationScope variation="experimental">
-  <YourPage />
-</VariationScope>
-```
-
-The corresponding CSS in `globals.css`:
-
-```css
-[data-variation="experimental"] {
-  font-family: var(--font-mono);
-}
-[data-variation="experimental"] .metric-grid-bg {
-  /* dotted grid bg */
-}
-[data-variation="experimental"] .brutal-card {
-  /* sharp corners, fg-colored border */
-}
-```
-
-Components **don't know** which variation they're in — they render tokens. Variation CSS adjusts tokens or adds decoration via scoped selectors. Keep that separation.
-
----
-
-## 7. Do's and don'ts
+## 6. Do's and don'ts
 
 ### Do
 
 - Use `box-shadow: 0 0 0 1px var(--color-line)` instead of `border: 1px solid …`
-- Reach for `shadow-[inset_0_0_0_1px_var(--color-line)]` (Tailwind arbitrary value) on one-off shadow rings
-- Use the `Icon` component and the `IconName` union — never inline SVGs in product surfaces
-- Import Orbit atoms from `@/components/orbit/*` (opinionated: `default/primary/accent/ghost` variants)
+- Reach for `shadow-[inset_0_0_0_1px_var(--color-line)]` on one-off shadow rings
+- Use the `Icon` component + `IconName` union — never inline SVGs in product surfaces
+- Import Orbit atoms from `@/components/orbit/*` (opinionated: `default/primary/accent/ghost`)
 - Import shadcn primitives from `@/components/ui/*` (canonical alias; used by blocks and ai-elements)
 - Use `font-mono` for technical labels, counts, timestamps, identifiers
 - Keep weight hierarchy to 400 / 500 / 600
@@ -284,52 +212,32 @@ Components **don't know** which variation they're in — they render tokens. Var
 
 ### Don't
 
-- Don't use CSS `border` on cards, inputs, sidebars — use shadow
-- Don't introduce weight 700 (bold) — use size for hierarchy
-- Don't use workflow colors (`--color-develop/preview/ship`) for decoration — only Pipeline stages
-- Don't use `text-primary`, `bg-card`, etc. from shadcn's default vocabulary in new **Orbit-authored** components — use Orbit tokens (`text-fg`, `bg-bg`) directly. shadcn's own files under `@/components/ui/*` may keep their original class names; the token bridge in `globals.css` remaps them to Orbit values at runtime.
-- Don't add a new provider when an existing token swap can accomplish the same thing
-- Don't put variation-specific styles into component files — they go in `globals.css` under `[data-variation="…"]`
+- Use CSS `border` on cards, inputs, sidebars — use shadow
+- Introduce weight 700 — use size for hierarchy
+- Use workflow colors (`--color-develop/preview/ship`) for decoration — only Pipeline stages
+- Use `text-primary`, `bg-card`, etc. from shadcn's default vocabulary in **Orbit-authored** components — use Orbit tokens (`text-fg`, `bg-bg`) directly. shadcn's own files in `@/components/ui/*` may keep their original class names; the token bridge in `globals.css` remaps them at runtime.
+- Add a new provider when an existing token swap can do the job
+- Put variation-specific styles into component files — they live in `globals.css` under `[data-variation="…"]`
+
+See [`CLAUDE.md`](./CLAUDE.md) for the agent-facing guardrails (import rules, forbidden edits, git hooks).
 
 ---
 
-## 8. Adding a component
+## 7. Adding a component
 
-1. Add the file to the right directory:
-   - Pure visual atom → `src/components/ui/`
+1. Place the file:
+   - Pure visual atom → `src/components/orbit/` (or `src/components/ui/` for shadcn-style)
    - Layout / shell → `src/components/layout/`
    - Data / composite → `src/components/data/`
-2. Use tokens only (`var(--color-fg)`, `bg-bg-muted`, etc.). No literal hexes in the component.
-3. If it has variants, use `cva` from `class-variance-authority` — match the style of existing atoms.
-4. Add a demo section to `/_design/components`:
-   - File: `src/app/design/components/page.tsx`
-   - Every variant must render there; the page doubles as the visual regression baseline.
-5. Run `bun run typecheck && bun run build` — both must pass before merging.
+2. Tokens only (`var(--color-fg)`, `bg-bg-muted`, …). No literal hexes in the component.
+3. If it has variants, use `cva` from `class-variance-authority` — match existing atoms' style.
+4. Add a demo section to `/_design/components` (`src/app/design/components/page.tsx`) — every variant must render there. The page doubles as the visual regression baseline.
+5. `bun run typecheck && bun run build` — both must pass before merging.
 
 ---
 
-## 9. Stack versions
+## 8. Stack & credits
 
-Pinned in `package.json`:
+Exact versions in [`package.json`](./package.json) (no `^` / `~` ranges; `bunfig.toml` + `.npmrc` enforce). Key requirements: **Node 22+** (Tailwind v4 requirement), **Bun 1.3+** as package manager, Turbopack enabled by default in `next dev` and `next build`. Don't mix with npm/pnpm.
 
-| Package               | Version  |
-| --------------------- | -------- |
-| `next`                | `16.2.4` |
-| `react` / `react-dom` | `19.2.4` |
-| `tailwindcss`         | `^4`     |
-| `typescript`          | `^5`     |
-| `geist`               | `^1.7`   |
-| `zod`                 | `^4`     |
-| `ai`                  | `^6`     |
-
-Node: Tailwind v4 requires Node 22+. Turbopack is on by default in `next dev` and `next build`.
-
-Package manager: **Bun** (`"packageManager": "bun@1.3.x"`). Use `bun install`, `bun run …`, `bun add …`. Don't mix with npm/pnpm.
-
----
-
-## 10. Credits & inspiration
-
-The shadow-as-border philosophy, the 3-weight type rule, and the "gallery emptiness" spacing are directly inspired by [Vercel's Geist design system](https://vercel.com/design/geist). Orbit diverges by (a) exposing all tokens as runtime-swappable CSS variables, (b) shipping three first-class layout variations, and (c) integrating ai-elements as a styled first-class surface.
-
-The accent swatches, workflow colors, and data shape are Orbit-original.
+Shadow-as-border, the 3-weight type rule, and the "gallery emptiness" spacing are directly inspired by [Vercel's Geist design system](https://vercel.com/design/geist). Orbit diverges by (a) exposing every token as runtime-swappable CSS variables, (b) shipping three first-class layout variations, and (c) integrating ai-elements as a styled first-class surface. Accent swatches, workflow colors, and data shape are Orbit-original.

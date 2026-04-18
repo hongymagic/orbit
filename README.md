@@ -23,14 +23,16 @@ Open [http://localhost:3000](http://localhost:3000) for the landing page, or jum
 
 | Layer      | Choice                                               |
 | ---------- | ---------------------------------------------------- |
-| Framework  | Next.js 16 (App Router, Turbopack, React 19)         |
-| Styling    | Tailwind v4 (CSS-first tokens via `@theme`)          |
+| Framework  | Next.js 16.2 (App Router, Turbopack, React 19.2)     |
+| Styling    | Tailwind v4.2 (CSS-first tokens via `@theme`)        |
 | Fonts      | Geist Sans + Geist Mono via `geist/font`             |
 | Primitives | shadcn (Radix) for interactive/a11y-heavy components |
 | AI UI      | ai-elements (vendored, 48 components)                |
 | State      | React Context (Theme · Accent · Variation)           |
-| Runtime    | Bun                                                  |
-| Language   | TypeScript (strict)                                  |
+| Runtime    | Bun 1.3                                              |
+| Language   | TypeScript 6.0 (strict)                              |
+
+All dependencies are pinned to exact versions — no `^` / `~` ranges in `package.json`. `bunfig.toml` and `.npmrc` set `save-exact=true` so `bun add <pkg>` keeps that policy.
 
 ## Scripts
 

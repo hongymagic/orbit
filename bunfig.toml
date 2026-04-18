@@ -1,0 +1,4 @@
+[install]
+# Pin exact versions so reinstalls reproduce the same tree.
+# Overrides the `^` caret default; leaves package.json ranges untouched unless `bun add` is used.
+exact = true
