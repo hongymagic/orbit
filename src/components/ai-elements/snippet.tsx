@@ -6,8 +6,8 @@ import {
   InputGroupButton,
   InputGroupInput,
   InputGroupText,
-} from "@/components/shadcn/input-group";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/input-group";
+import { cn } from "@/lib/utils";
 import { CheckIcon, CopyIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 import {

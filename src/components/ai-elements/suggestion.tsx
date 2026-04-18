@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   ScrollArea,
   ScrollBar,
-} from "@/components/shadcn/scroll-area";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 import type { ComponentProps } from "react";
 import { useCallback } from "react";
 

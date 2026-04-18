@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/orbit/badge";
 import { Icon } from "@/components/icons";
 
 export default function HomePage() {

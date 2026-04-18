@@ -1,13 +1,13 @@
 "use client";
 
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/shadcn/collapsible";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 import {
   AlertTriangleIcon,
   CheckIcon,

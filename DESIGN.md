@@ -136,15 +136,15 @@ Letter-spacing scales inversely with size. At display sizes (44px+), push to `-0
 
 ## 3. Component inventory
 
-**Atoms** — no Radix dependency, tokens-only:
+**Orbit atoms** — no Radix dependency, tokens-only, opinionated 4-variant APIs:
 
 | Component | Path | Variants |
 |-----------|------|----------|
-| `Button` / `buttonStyles` | `src/components/ui/button.tsx` | `default · primary · accent · ghost` × `sm · md · lg` + `iconOnly` |
-| `Badge` | `src/components/ui/badge.tsx` | `neutral · ok · warn · err · info` × `solid` + `dot` |
-| `Card` / `CardHead` / `CardBody` | `src/components/ui/card.tsx` | `lifted`, `pad` |
-| `Sparkline` | `src/components/ui/sparkline.tsx` | `area`, custom `color` |
-| `Metric` / `MetricGrid` | `src/components/ui/metric.tsx` | `withGridBg` (experimental variation) |
+| `Button` / `buttonStyles` | `src/components/orbit/button.tsx` | `default · primary · accent · ghost` × `sm · md · lg` + `iconOnly` |
+| `Badge` | `src/components/orbit/badge.tsx` | `neutral · ok · warn · err · info` × `solid` + `dot` |
+| `Card` / `CardHead` / `CardBody` | `src/components/orbit/card.tsx` | `lifted`, `pad` |
+| `Sparkline` | `src/components/orbit/sparkline.tsx` | `area`, custom `color` |
+| `Metric` / `MetricGrid` | `src/components/orbit/metric.tsx` | `withGridBg` (experimental variation) |
 
 **Layout** — app shell + composition:
 
@@ -171,9 +171,9 @@ Letter-spacing scales inversely with size. At display sizes (44px+), push to `-0
 
 **shadcn primitives** — Radix-backed interactive components, restyled via the token bridge in `globals.css` (`--color-background` → `--color-bg`, etc.).
 
-- Location: [`src/components/shadcn/`](./src/components/shadcn/)
-- Used for: Dialog, Popover, DropdownMenu, Tabs, Tooltip, Command, ScrollArea, Sheet, Select, and AI-specific primitives (ButtonGroup, InputGroup, HoverCard, Spinner, etc.)
-- Rule: **don't import from `@/components/shadcn/*` for visual atoms** — import from `@/components/ui/*` instead. Shadcn is for interactive/a11y-heavy primitives only.
+- Location: [`src/components/ui/`](./src/components/ui/) — **canonical shadcn alias** (follows upstream docs)
+- Used for: Dialog, Popover, DropdownMenu, Tabs, Tooltip, Command, ScrollArea, Sheet, Select, Avatar, Collapsible, Combobox, and AI-specific primitives (ButtonGroup, InputGroup, HoverCard, Spinner, Kbd, etc.)
+- Also contains shadcn's own `Button`/`Badge`/`Card` — used by blocks and ai-elements internally. Product code chooses between these (flexible, shadcn API) and Orbit's (opinionated 4-variant API) depending on the use case.
 
 **ai-elements** — Vercel's AI UI kit, vendored:
 
@@ -261,8 +261,8 @@ Components **don't know** which variation they're in — they render tokens. Var
 - Use `box-shadow: 0 0 0 1px var(--color-line)` instead of `border: 1px solid …`
 - Reach for `shadow-[inset_0_0_0_1px_var(--color-line)]` (Tailwind arbitrary value) on one-off shadow rings
 - Use the `Icon` component and the `IconName` union — never inline SVGs in product surfaces
-- Import atoms from `@/components/ui/*`
-- Import heavy interactive primitives (Dialog, DropdownMenu, Command) from `@/components/shadcn/*`
+- Import Orbit atoms from `@/components/orbit/*` (opinionated: `default/primary/accent/ghost` variants)
+- Import shadcn primitives from `@/components/ui/*` (canonical alias; used by blocks and ai-elements)
 - Use `font-mono` for technical labels, counts, timestamps, identifiers
 - Keep weight hierarchy to 400 / 500 / 600
 - Add new icons to `icons.tsx`; keep the bespoke stroke weight (1.5) consistent
@@ -271,7 +271,7 @@ Components **don't know** which variation they're in — they render tokens. Var
 - Don't use CSS `border` on cards, inputs, sidebars — use shadow
 - Don't introduce weight 700 (bold) — use size for hierarchy
 - Don't use workflow colors (`--color-develop/preview/ship`) for decoration — only Pipeline stages
-- Don't use `text-primary`, `bg-card`, etc. from shadcn's default vocabulary in new components — use Orbit tokens (`text-fg`, `bg-bg`) directly
+- Don't use `text-primary`, `bg-card`, etc. from shadcn's default vocabulary in new **Orbit-authored** components — use Orbit tokens (`text-fg`, `bg-bg`) directly. shadcn's own files under `@/components/ui/*` may keep their original class names; the token bridge in `globals.css` remaps them to Orbit values at runtime.
 - Don't add a new provider when an existing token swap can accomplish the same thing
 - Don't put variation-specific styles into component files — they go in `globals.css` under `[data-variation="…"]`
 

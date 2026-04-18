@@ -1,13 +1,13 @@
 "use client";
 
-import { Avatar, AvatarFallback } from "@/components/shadcn/avatar";
-import { Button } from "@/components/shadcn/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/shadcn/collapsible";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 import {
   CheckIcon,
   CopyIcon,

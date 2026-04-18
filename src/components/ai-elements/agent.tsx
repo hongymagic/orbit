@@ -5,9 +5,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/shadcn/accordion";
-import { Badge } from "@/components/shadcn/badge";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import type { Tool } from "ai";
 import { BotIcon } from "lucide-react";
 import type { ComponentProps } from "react";

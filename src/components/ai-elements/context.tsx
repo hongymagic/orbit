@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/shadcn/hover-card";
-import { Progress } from "@/components/shadcn/progress";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/hover-card";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 import type { LanguageModelUsage } from "ai";
 import type { ComponentProps } from "react";
 import { createContext, useContext, useMemo } from "react";

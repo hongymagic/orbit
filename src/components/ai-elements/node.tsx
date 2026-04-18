@@ -6,8 +6,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/shadcn/card";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { Handle, Position } from "@xyflow/react";
 import type { ComponentProps } from "react";
 

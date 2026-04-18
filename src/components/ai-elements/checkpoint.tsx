@@ -1,13 +1,13 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
-import { Separator } from "@/components/shadcn/separator";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/shadcn/tooltip";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import type { LucideProps } from "lucide-react";
 import { BookmarkIcon } from "lucide-react";
 import type { ComponentProps, HTMLAttributes } from "react";

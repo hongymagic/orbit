@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { Topbar } from "@/components/layout/topbar";
 import { Page, PageHead } from "@/components/layout/page-shell";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardBody, CardHead } from "@/components/ui/card";
+import { Badge } from "@/components/orbit/badge";
+import { Card, CardBody, CardHead } from "@/components/orbit/card";
 import { Icon } from "@/components/icons";
 
 const sections = [

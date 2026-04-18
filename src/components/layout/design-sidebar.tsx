@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 import { designNav } from "@/lib/design-nav";
 import { Icon } from "@/components/icons";
 import { Avatar, BrandMark } from "./brand-mark";

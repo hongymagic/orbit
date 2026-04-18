@@ -1,12 +1,12 @@
 "use client";
 
-import { Badge } from "@/components/shadcn/badge";
+import { Badge } from "@/components/ui/badge";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/shadcn/collapsible";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 import {
   CheckCircle2Icon,
   ChevronRightIcon,

@@ -1,6 +1,6 @@
 import { Topbar } from "@/components/layout/topbar";
 import { Page, PageHead } from "@/components/layout/page-shell";
-import { Card, CardBody, CardHead } from "@/components/ui/card";
+import { Card, CardBody, CardHead } from "@/components/orbit/card";
 
 const colorTokens = [
   { token: "--color-bg",          description: "Page background", swatch: "bg-bg" },

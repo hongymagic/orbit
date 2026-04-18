@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -9,13 +9,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/shadcn/card";
+} from "@/components/ui/card";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/shadcn/collapsible";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 import { ChevronsUpDownIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 import { createContext, useContext, useMemo } from "react";

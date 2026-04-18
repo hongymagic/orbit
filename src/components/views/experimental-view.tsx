@@ -2,10 +2,10 @@
 
 import { Column, DataTable } from "@/components/data/data-table";
 import { Console } from "@/components/data/console";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardHead } from "@/components/ui/card";
-import { Metric, MetricGrid } from "@/components/ui/metric";
+import { Badge } from "@/components/orbit/badge";
+import { Button } from "@/components/orbit/button";
+import { Card, CardHead } from "@/components/orbit/card";
+import { Metric, MetricGrid } from "@/components/orbit/metric";
 import { GridSplit, Page, PageHead } from "@/components/layout/page-shell";
 
 import { runtimeLogs } from "@/data/logs";

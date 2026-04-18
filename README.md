@@ -62,7 +62,7 @@ All scripts run with `NODE_OPTIONS='--use-system-ca'` so corporate certificates 
 - **Shadow, not border** — every boundary is a `box-shadow`.
 - **Tokens only** — no literal hex colors in components.
 - **Three weights** — 400, 500, 600. Never 700.
-- **Atoms in `components/ui/`**, shadcn in `components/shadcn/` — don't mix.
+- **Canonical shadcn paths**: shadcn in `components/ui/`, Orbit atoms in `components/orbit/`, `cn` from `@/lib/utils`.
 - **⌘.** opens the Tweaks panel (theme · accent · variation).
 
 See [CLAUDE.md](./CLAUDE.md) for the full set.

@@ -1,7 +1,7 @@
 "use client";
 
-import { TooltipProvider } from "@/components/shadcn/tooltip";
-import { Toaster } from "@/components/shadcn/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 
 import { AccentProvider } from "./accent-provider";
 import { ThemeProvider } from "./theme-provider";

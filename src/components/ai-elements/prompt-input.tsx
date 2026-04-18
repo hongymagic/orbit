@@ -8,38 +8,38 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/shadcn/command";
+} from "@/components/ui/command";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/shadcn/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/shadcn/hover-card";
+} from "@/components/ui/hover-card";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupTextarea,
-} from "@/components/shadcn/input-group";
+} from "@/components/ui/input-group";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/shadcn/select";
-import { Spinner } from "@/components/shadcn/spinner";
+} from "@/components/ui/select";
+import { Spinner } from "@/components/ui/spinner";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/shadcn/tooltip";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import type { ChatStatus, FileUIPart, SourceDocumentUIPart } from "ai";
 import {
   CornerDownLeftIcon,

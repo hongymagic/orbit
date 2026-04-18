@@ -4,14 +4,14 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/shadcn/collapsible";
+} from "@/components/ui/collapsible";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/shadcn/tabs";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import type { ToolUIPart } from "ai";
 import { ChevronDownIcon, Code } from "lucide-react";
 import type { ComponentProps } from "react";

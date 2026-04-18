@@ -1,10 +1,10 @@
 import { Topbar } from "@/components/layout/topbar";
 import { Page, PageHead } from "@/components/layout/page-shell";
-import { Card, CardBody, CardHead } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Metric, MetricGrid } from "@/components/ui/metric";
-import { Sparkline } from "@/components/ui/sparkline";
+import { Card, CardBody, CardHead } from "@/components/orbit/card";
+import { Button } from "@/components/orbit/button";
+import { Badge } from "@/components/orbit/badge";
+import { Metric, MetricGrid } from "@/components/orbit/metric";
+import { Sparkline } from "@/components/orbit/sparkline";
 import { Icon, iconNames } from "@/components/icons";
 import { Pipeline, PipelineArrow, PipelineStep } from "@/components/data/pipeline";
 import { Activity } from "@/components/data/activity";
@@ -26,7 +26,7 @@ export default function ComponentsPage() {
 
         <Section
           title="Button"
-          path="src/components/ui/button.tsx"
+          path="src/components/orbit/button.tsx"
           description="4 variants × 3 sizes + icon-only. Uses radix Slot for asChild."
         >
           <div className="flex items-center gap-3 flex-wrap">
@@ -48,7 +48,7 @@ export default function ComponentsPage() {
 
         <Section
           title="Badge"
-          path="src/components/ui/badge.tsx"
+          path="src/components/orbit/badge.tsx"
           description="5 tones × shadow-bordered or solid · optional dot indicator."
         >
           <div className="flex items-center gap-3 flex-wrap">
@@ -67,7 +67,7 @@ export default function ComponentsPage() {
 
         <Section
           title="Metric grid"
-          path="src/components/ui/metric.tsx"
+          path="src/components/orbit/metric.tsx"
           description="4 equal cells, inline sparkline, shared outer shadow."
         >
           <MetricGrid>
@@ -80,7 +80,7 @@ export default function ComponentsPage() {
 
         <Section
           title="Sparkline"
-          path="src/components/ui/sparkline.tsx"
+          path="src/components/orbit/sparkline.tsx"
           description="Line-only by default. Pass `area` for filled variant."
         >
           <div className="flex items-center gap-6">

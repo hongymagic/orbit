@@ -53,16 +53,18 @@ src/
 
 | Import | From |
 |--------|------|
-| Visual atoms (Button, Badge, Card, Metric, Sparkline) | `@/components/ui/*` |
+| Orbit atoms (Button, Badge, Card, Metric, Sparkline) | `@/components/orbit/*` |
+| shadcn primitives + AI-shadcn deps (Button, Badge, Card, Dialog, Popover, DropdownMenu, Tabs, Sheet, Tooltip, Command, Avatar, Collapsible, etc.) | `@/components/ui/*` |
 | Layout (Sidebar, Topbar, Page, Grid) | `@/components/layout/*` |
 | Data composites (DataTable, Pipeline, Console, Activity) | `@/components/data/*` |
 | Icons | `@/components/icons` — use `<Icon name="…" />`, not inline SVG |
-| Interactive primitives (Dialog, Popover, Command, Tabs, Sheet, DropdownMenu, Tooltip) | `@/components/shadcn/*` |
 | AI surfaces (Conversation, Message, PromptInput, CodeBlock, Tool) | `@/components/ai-elements/*` |
 | Theme/accent/variation state | `@/providers` |
-| `cn` helper | `@/lib/cn` |
+| `cn` helper | `@/lib/utils` |
 
-**Never** import shadcn primitives for visual atoms (`@/components/shadcn/button` is off-limits — use `@/components/ui/button`). The two exist for different reasons; mixing them erodes the token layer.
+**Paths follow shadcn conventions**: `@/components/ui/*` = shadcn, `@/lib/utils` = cn helper. This is the default every shadcn/ai-elements doc snippet assumes, so pasted code works without rewriting.
+
+**Orbit atoms live at `@/components/orbit/*`** — intentionally opinionated 4-variant `Button`/`Badge`/`Card`/`Metric`/`Sparkline` with Orbit tokens. When a shadcn *block* or *ai-element* internally imports `@/components/ui/button`, it gets shadcn's Button (restyled via tokens). When *product code* wants the Orbit button API, import from `@/components/orbit/*`.
 
 ### Styling rules
 
@@ -99,7 +101,7 @@ All scripts export `NODE_OPTIONS='--use-system-ca'` so corporate CAs and mkcert 
 ```bash
 bunx --bun shadcn@latest add <name>
 ```
-Drops into `src/components/shadcn/`. Review the generated file and ensure it uses Orbit tokens (the bridge in `globals.css` handles most of this automatically, but double-check arbitrary colors).
+Drops into `src/components/ui/` (canonical shadcn alias). Review the generated file; the token bridge in `globals.css` remaps shadcn's semantic class names (`bg-primary`, `text-muted-foreground`, etc.) to Orbit values at runtime, so you usually don't need to touch classes. Only edit if the component uses arbitrary colors that bypass the bridge.
 
 ### Adding an ai-element component
 ai-elements are already vendored. If the one you need is missing, add via:

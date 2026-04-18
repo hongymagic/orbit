@@ -1,55 +1,48 @@
-import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils"
 
-const badgeStyles = cva(
-  [
-    "inline-flex items-center gap-1.5 h-5 px-2",
-    "rounded-pill font-mono text-[11px] font-medium whitespace-nowrap",
-    "shadow-[inset_0_0_0_1px_var(--color-line)]",
-  ],
+const badgeVariants = cva(
+  "inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
-      tone: {
-        neutral: "text-fg-muted",
-        ok: "text-success",
-        warn: "text-warn",
-        err: "text-error",
-        info: "text-accent",
-      },
-      solid: {
-        true: "shadow-none",
-        false: "",
+      variant: {
+        default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+        secondary:
+          "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
+        destructive:
+          "bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90",
+        outline:
+          "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        ghost: "[a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 [a&]:hover:underline",
       },
     },
-    compoundVariants: [
-      { solid: true, tone: "ok",   class: "bg-[color-mix(in_oklab,var(--color-success)_14%,transparent)] text-success" },
-      { solid: true, tone: "warn", class: "bg-[color-mix(in_oklab,var(--color-warn)_14%,transparent)] text-warn" },
-      { solid: true, tone: "err",  class: "bg-[color-mix(in_oklab,var(--color-error)_14%,transparent)] text-error" },
-      { solid: true, tone: "info", class: "bg-accent-soft text-accent" },
-      { solid: true, tone: "neutral", class: "bg-bg-muted text-fg-muted" },
-    ],
-    defaultVariants: { tone: "neutral", solid: false },
-  },
-);
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
 
-export type BadgeProps = React.HTMLAttributes<HTMLSpanElement> &
-  VariantProps<typeof badgeStyles> & {
-    dot?: boolean;
-  };
-
-export function Badge({
+function Badge({
   className,
-  tone,
-  solid,
-  dot = false,
-  children,
-  ...rest
-}: BadgeProps) {
+  variant = "default",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot.Root : "span"
+
   return (
-    <span className={cn(badgeStyles({ tone, solid }), className)} {...rest}>
-      {dot ? <span className="h-1.5 w-1.5 rounded-full bg-current" /> : null}
-      {children}
-    </span>
-  );
+    <Comp
+      data-slot="badge"
+      data-variant={variant}
+      className={cn(badgeVariants({ variant }), className)}
+      {...props}
+    />
+  )
 }
+
+export { Badge, badgeVariants }

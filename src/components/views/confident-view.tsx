@@ -3,9 +3,9 @@
 import { Icon } from "@/components/icons";
 import { Column, DataTable } from "@/components/data/data-table";
 import { CodeSnippet } from "@/components/data/code-snippet";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardBody, CardHead } from "@/components/ui/card";
+import { Badge } from "@/components/orbit/badge";
+import { Button } from "@/components/orbit/button";
+import { Card, CardBody, CardHead } from "@/components/orbit/card";
 import { Grid, GridSplit, Page } from "@/components/layout/page-shell";
 
 import { services, serviceStatusLabel, type Service } from "@/data/services";

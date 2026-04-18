@@ -5,10 +5,10 @@ import { Activity } from "@/components/data/activity";
 import { Console } from "@/components/data/console";
 import { Column, DataTable } from "@/components/data/data-table";
 import { Pipeline, PipelineArrow, PipelineStep } from "@/components/data/pipeline";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardBody, CardHead } from "@/components/ui/card";
-import { Metric, MetricGrid } from "@/components/ui/metric";
+import { Badge } from "@/components/orbit/badge";
+import { Button } from "@/components/orbit/button";
+import { Card, CardBody, CardHead } from "@/components/orbit/card";
+import { Metric, MetricGrid } from "@/components/orbit/metric";
 import { Grid, GridSplit, Page, PageHead } from "@/components/layout/page-shell";
 
 import { activityToday } from "@/data/activity";

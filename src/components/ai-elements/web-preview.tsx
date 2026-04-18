@@ -1,19 +1,19 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/shadcn/collapsible";
-import { Input } from "@/components/shadcn/input";
+} from "@/components/ui/collapsible";
+import { Input } from "@/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/shadcn/tooltip";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 import {

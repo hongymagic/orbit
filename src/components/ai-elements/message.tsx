@@ -1,17 +1,17 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   ButtonGroup,
   ButtonGroupText,
-} from "@/components/shadcn/button-group";
+} from "@/components/ui/button-group";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/shadcn/tooltip";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";

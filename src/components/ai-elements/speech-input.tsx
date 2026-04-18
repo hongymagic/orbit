@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
-import { Spinner } from "@/components/shadcn/spinner";
-import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import { cn } from "@/lib/utils";
 import { MicIcon, SquareIcon } from "lucide-react";
 import type { ComponentProps } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";

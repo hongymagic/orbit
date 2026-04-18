@@ -1,10 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 import { Icon } from "@/components/icons";
 
 import { BrandMark } from "./brand-mark";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/orbit/button";
 
 export type BreadcrumbEntry = string | { label: string; href?: string };
 

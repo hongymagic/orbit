@@ -1,7 +1,7 @@
 import { Topbar } from "@/components/layout/topbar";
 import { Page, PageHead } from "@/components/layout/page-shell";
-import { Card, CardBody, CardHead } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardBody, CardHead } from "@/components/orbit/card";
+import { Badge } from "@/components/orbit/badge";
 import { AiDemo } from "./demo";
 
 export default function AiDemoPage() {

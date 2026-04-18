@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/shadcn/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/shadcn/dropdown-menu";
-import { cn } from "@/lib/cn";
+} from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
 import {
   ChevronDownIcon,
   ExternalLinkIcon,

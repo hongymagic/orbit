@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@/lib/utils";
 import { useHotkey } from "@/lib/use-hotkey";
 import { Icon } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/orbit/button";
 import {
   ACCENTS,
   VARIATIONS,
