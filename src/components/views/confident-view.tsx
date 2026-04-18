@@ -221,12 +221,13 @@ export function ConfidentView() {
             <CardHead title="Uptime · 30d" sub="99.94% overall" />
             <CardBody>
               <div className="flex gap-[2px] items-end h-12">
-                {Array.from({ length: 30 }).map((_, i) => {
-                  const h = 28 + (i % 5) * 4 + Math.sin(i) * 6;
-                  const bad = i === 18 || i === 22;
+                {Array.from({ length: 30 }, (_, i) => i).map((day) => {
+                  const h = 28 + (day % 5) * 4 + Math.sin(day) * 6;
+                  const bad = day === 18 || day === 22;
                   return (
                     <div
-                      key={i}
+                      // oxlint-disable-next-line no-array-index-key -- fixed-length decorative bar chart, no reorder possible
+                      key={day}
                       className="flex-1 rounded-[1px]"
                       style={{
                         height: bad ? 12 : h,

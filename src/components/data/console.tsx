@@ -39,8 +39,8 @@ export function Console({
       )}
       style={{ maxHeight }}
     >
-      {entries.map((entry, i) => (
-        <LogRow key={i} {...entry} />
+      {entries.map((entry) => (
+        <LogRow key={`${entry.time}-${entry.level}`} {...entry} />
       ))}
     </div>
   );

@@ -71,6 +71,7 @@ export async function POST(req: Request) {
         controller.enqueue(
           encoder.encode(`data: ${JSON.stringify({ type: "text-delta", id, delta: chunk })}\n\n`),
         );
+        // oxlint-disable-next-line no-await-in-loop -- sequential pacing is intentional for SSE streaming
         await new Promise((r) => setTimeout(r, 30));
       }
 

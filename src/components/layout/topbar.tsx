@@ -43,7 +43,7 @@ export function Topbar({
           const label = typeof entry === "string" ? entry : entry.label;
           const last = i === crumbs.length - 1;
           return (
-            <div key={i} className="flex items-center gap-2">
+            <div key={label} className="flex items-center gap-2">
               {i > 0 ? <span className="text-fg-faint">/</span> : null}
               <span className={cn(last && "text-fg font-medium")}>{label}</span>
             </div>

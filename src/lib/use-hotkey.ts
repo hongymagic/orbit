@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export type HotkeyModifier = "meta" | "ctrl" | "alt" | "shift";
 
@@ -18,14 +18,20 @@ function matches(e: KeyboardEvent, descriptor: HotkeyDescriptor) {
 }
 
 export function useHotkey(descriptor: HotkeyDescriptor, handler: (e: KeyboardEvent) => void) {
+  const descriptorRef = useRef(descriptor);
+  const handlerRef = useRef(handler);
+
+  descriptorRef.current = descriptor;
+  handlerRef.current = handler;
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (matches(e, descriptor)) {
+      if (matches(e, descriptorRef.current)) {
         e.preventDefault();
-        handler(e);
+        handlerRef.current(e);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [descriptor.key, descriptor.modifiers?.join(","), handler]);
+  }, []);
 }

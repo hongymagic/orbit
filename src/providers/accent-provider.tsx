@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 export type AccentName = "indigo" | "violet" | "emerald" | "rose" | "amber" | "mono";
 
@@ -69,11 +69,12 @@ export function AccentProvider({
   const accentName: AccentName | "custom" =
     ACCENTS.find((a) => a.color.toLowerCase() === accent.toLowerCase())?.name ?? "custom";
 
-  return (
-    <AccentContext.Provider value={{ accent, accentName, setAccent, setAccentByName }}>
-      {children}
-    </AccentContext.Provider>
+  const value = useMemo(
+    () => ({ accent, accentName, setAccent, setAccentByName }),
+    [accent, accentName, setAccent, setAccentByName],
   );
+
+  return <AccentContext.Provider value={value}>{children}</AccentContext.Provider>;
 }
 
 export function useAccent() {

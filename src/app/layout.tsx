@@ -6,6 +6,7 @@ import { Providers } from "@/providers";
 import { AccentNoFlashScript } from "@/providers/accent-provider";
 import { ThemeNoFlashScript } from "@/providers/theme-provider";
 
+// oxlint-disable-next-line import/no-unassigned-import -- required side-effect import for Tailwind layer
 import "./globals.css";
 
 export const metadata: Metadata = {

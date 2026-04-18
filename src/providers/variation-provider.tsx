@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 export type Variation = "conservative" | "confident" | "experimental";
 
@@ -45,11 +45,9 @@ export function VariationProvider({
     } catch {}
   }, []);
 
-  return (
-    <VariationContext.Provider value={{ variation, setVariation }}>
-      {children}
-    </VariationContext.Provider>
-  );
+  const value = useMemo(() => ({ variation, setVariation }), [variation, setVariation]);
+
+  return <VariationContext.Provider value={value}>{children}</VariationContext.Provider>;
 }
 
 export function useVariation() {

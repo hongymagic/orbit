@@ -17,9 +17,9 @@ export function Activity({
 }) {
   return (
     <div className={cn("flex flex-col", className)}>
-      {events.map((event, i) => (
+      {events.map((event) => (
         <div
-          key={i}
+          key={`${event.actor}-${event.time}`}
           className={cn(
             "grid items-center gap-2.5 px-4 py-2.5",
             "shadow-[0_1px_0_var(--color-line-subtle)] last:shadow-none",
