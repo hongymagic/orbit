@@ -83,21 +83,19 @@ export function ProfileMenu({
 
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href={"/settings" as never}>
+            <Link href={"/_design/surfaces/settings" as never}>
               <Icon name="team" />
               Account
-              <DropdownMenuShortcut>/settings</DropdownMenuShortcut>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href={"/billing" as never}>
+            <Link href={"/_design/surfaces/billing" as never}>
               <Icon name="key" />
               Billing
-              <DropdownMenuShortcut>/billing</DropdownMenuShortcut>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href={"/settings#team" as never}>
+            <Link href={"/_design/surfaces/settings" as never}>
               <Icon name="team" />
               Team settings
             </Link>

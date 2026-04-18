@@ -31,21 +31,22 @@ Read order — agents: `CLAUDE.md` → `DESIGN.md` → `/_design`. Humans: `READ
 | AI chat + reasoning + code UI                               | `/_design/ai`, `/ai/reasoning`, `/ai/code`       | `src/app/design/ai/*/page.tsx`        |
 | Original vanilla-React mock (archaeology, read-only)        | —                                                | `_reference/` — don't import          |
 
-Every `/_design/*` route sources real, importable surface components from `src/components/surfaces/*` — the same ones that back product routes (`/signup`, `/settings`, `/billing`). Copy the surface into the product and it just works. **Before inventing, check `/_design/components`. Before a new layout, check the three variation routes.**
+Every `/_design/*` route sources real, importable surface components from `src/components/surfaces/*`. When you wire a real product route, mount the same surface under `src/app/` and it just works. **Before inventing, check `/_design/components`. Before a new layout, check the three variation routes.**
 
 ## Repo layout
 
 ```
 src/
 ├── app/
-│   ├── page.tsx · layout.tsx · not-found.tsx · error.tsx · globals.css
-│   ├── dashboard/ · login/ · signup/ · settings/ · billing/     # product routes
-│   ├── design/            # /_design/* (rewrite) — design-system reference
+│   ├── page.tsx · layout.tsx · not-found.tsx · error.tsx · globals.css  # landing + Next.js required
+│   ├── design/            # /_design/* (rewrite) — all page examples live here
 │   │   ├── tokens/ · components/ · blocks/
+│   │   ├── dashboard/                                            # Orbit IDP dashboard block
 │   │   ├── conservative/ · confident/ · experimental/            # variation layouts
 │   │   ├── surfaces/{signup,login,settings,billing,empty,errors,detail}
 │   │   └── ai/{conversation,reasoning,code}
 │   └── api/chat/          # mocked streaming chat endpoint (SSE)
+│   # Product routes — add under src/app/ when building real work. Kept empty by design.
 ├── components/
 │   ├── orbit/             # Orbit atoms — opinionated 4-variant API (Button, Badge, Card, Metric, Sparkline)
 │   ├── ui/                # shadcn primitives — canonical alias (Button, Badge, Card, Dialog, Popover, …)

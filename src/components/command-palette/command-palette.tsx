@@ -105,24 +105,6 @@ function CommandPaletteDialog() {
 
         <CommandSeparator />
 
-        <CommandGroup heading="Navigate · product">
-          <CommandItem
-            value="product dashboard"
-            onSelect={() => run(() => router.push("/dashboard"))}
-          >
-            <Icon name="dash" className="mr-2" />
-            <span>Dashboard</span>
-            <CommandShortcut>shadcn block</CommandShortcut>
-          </CommandItem>
-          <CommandItem value="product login" onSelect={() => run(() => router.push("/login"))}>
-            <Icon name="key" className="mr-2" />
-            <span>Login</span>
-            <CommandShortcut>shadcn block</CommandShortcut>
-          </CommandItem>
-        </CommandGroup>
-
-        <CommandSeparator />
-
         <CommandGroup heading="Deployments">
           {deployments.map((d) => (
             <CommandItem

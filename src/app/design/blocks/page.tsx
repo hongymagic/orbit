@@ -19,21 +19,21 @@ type Block = {
 const blocks: readonly Block[] = [
   {
     name: "Dashboard",
-    id: "dashboard-01",
+    id: "dashboard-idp",
     category: "Application",
-    path: "src/app/dashboard + src/components/{app-sidebar,data-table,section-cards,site-header,nav-*}.tsx",
+    path: "src/app/design/dashboard/page.tsx + src/components/{orbit,data,layout}/*",
     description:
-      "Full application shell — sidebar + header + section cards + data table + area chart. Installed from shadcn registry as-is; swap data to taste.",
-    openHref: "/dashboard",
+      "Orbit IDP dashboard — metric grid, recent deployments, pipeline + activity split, and build output console. Composed from Orbit atoms and data composites; matches the _reference/Orbit IDP.html default surface.",
+    openHref: "/_design/dashboard",
   },
   {
     name: "Login",
     id: "login-01",
     category: "Auth",
-    path: "src/app/login + src/components/login-form.tsx",
+    path: "src/components/login-form.tsx",
     description:
-      "Standard email-and-password login with branded wrapper. Form uses shadcn Field primitives.",
-    openHref: "/login",
+      "Standard email-and-password login with branded wrapper. Form uses shadcn Field primitives. Mount under src/app/ when wiring a real auth route.",
+    openHref: "/_design/surfaces/login",
   },
   {
     name: "Sidebar",
@@ -41,8 +41,7 @@ const blocks: readonly Block[] = [
     category: "Navigation",
     path: "src/components/{app-sidebar,nav-main,nav-projects,nav-secondary,nav-user,team-switcher}.tsx",
     description:
-      "Collapsible app sidebar with team switcher, grouped nav, and user menu. Used by the dashboard block; drop into other routes via <SidebarProvider>.",
-    openHref: "/dashboard",
+      "Collapsible app sidebar with team switcher, grouped nav, and user menu. Raw shadcn output — available if a product surface wants it; the /_design routes themselves use DesignSidebar.",
   },
   {
     name: "Calendar · single",

@@ -11,7 +11,7 @@ export default function GallerySignup() {
         <PageHead
           kicker="Auth"
           title="Signup"
-          sub="Zod-validated form with inline errors and success toast. Source: src/components/surfaces/signup-form.tsx. Real route: /signup."
+          sub="Zod-validated form with inline errors and success toast. Source: src/components/surfaces/signup-form.tsx."
         />
         <Card>
           <CardHead title="Live form" sub="Submit to trigger the success toast (no backend call)" />

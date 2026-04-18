@@ -11,7 +11,7 @@ export default function GallerySettings() {
         <PageHead
           kicker="Tabs + forms"
           title="Settings"
-          sub="Multi-tab settings with live state. Appearance tab mutates the live Theme/Accent/Variation providers. Real route: /settings."
+          sub="Multi-tab settings with live state. Appearance tab mutates the live Theme/Accent/Variation providers. Source: src/components/surfaces/settings-view.tsx."
         />
         <Card>
           <CardHead

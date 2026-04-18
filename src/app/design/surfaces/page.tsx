@@ -9,7 +9,6 @@ type Surface = {
   title: string;
   description: string;
   gallery: string;
-  product?: string;
 };
 
 const surfaces: readonly Surface[] = [
@@ -17,26 +16,22 @@ const surfaces: readonly Surface[] = [
     title: "Signup",
     description: "Zod-validated signup form with error toasts.",
     gallery: "/_design/surfaces/signup",
-    product: "/signup",
   },
   {
     title: "Login",
     description: "shadcn login-01 block — email + password + brand header.",
     gallery: "/_design/surfaces/login",
-    product: "/login",
   },
   {
     title: "Settings",
     description:
       "Tabs for Profile · Appearance · Team · Notifications. Live state wired to providers.",
     gallery: "/_design/surfaces/settings",
-    product: "/settings",
   },
   {
     title: "Billing",
     description: "Plan cards, live usage meters, invoice table.",
     gallery: "/_design/surfaces/billing",
-    product: "/billing",
   },
   {
     title: "Empty states",
@@ -63,7 +58,7 @@ export default function SurfacesIndex() {
         <PageHead
           kicker="Product-ready"
           title="Surfaces"
-          sub="Full pages, wired and ready to clone. Each surface's implementation lives in src/components/surfaces/ and is mounted at BOTH /_design/surfaces/… (reference) AND the real product path (e.g. /signup, /settings, /billing) so you can preview in context or use directly."
+          sub="Full pages, wired and ready to clone. Each surface's implementation lives in src/components/surfaces/ — move it under src/app/ when you wire up real product routes."
         />
         <div
           className="grid gap-4"
@@ -81,14 +76,6 @@ export default function SurfacesIndex() {
                   >
                     Gallery view <Icon name="chev" className="rotate-[-90deg]" />
                   </Link>
-                  {s.product ? (
-                    <Link
-                      href={s.product as never}
-                      className="inline-flex items-center gap-1.5 h-6 px-2.5 rounded-sm text-[12px] font-medium text-fg-muted hover:text-fg shadow-[inset_0_0_0_1px_var(--color-line)]"
-                    >
-                      Real route <Icon name="chev" className="rotate-[-90deg]" />
-                    </Link>
-                  ) : null}
                 </div>
               </CardBody>
             </Card>

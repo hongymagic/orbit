@@ -36,8 +36,6 @@
     "src/components/site-header.tsx",
     "src/components/team-switcher.tsx",
     "src/components/version-switcher.tsx",
-    "src/app/dashboard/**",
-    "src/app/login/**",
     "next-env.d.ts",
     "*.min.js"
   ],

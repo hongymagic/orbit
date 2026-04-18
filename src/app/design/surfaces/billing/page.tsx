@@ -10,7 +10,7 @@ export default function GalleryBilling() {
         <PageHead
           kicker="Plans + usage + invoices"
           title="Billing"
-          sub="Tier cards (recommended tier uses accent ring), usage bars that warn past 75%, invoice table. Real route: /billing."
+          sub="Tier cards (recommended tier uses accent ring), usage bars that warn past 75%, invoice table. Source: src/components/surfaces/billing-view.tsx."
         />
         <BillingView />
       </Page>
