@@ -41,6 +41,13 @@
   --color-error: #dc2626;
   --color-info: var(--color-accent);
 
+  /* chart palette — fixed workflow spectrum, same in light + dark */
+  --chart-1: var(--color-develop); /* #0a72ef  blue  */
+  --chart-2: var(--color-preview); /* #de1d8d  pink  */
+  --chart-3: var(--color-ship); /* #ff5b4f  red   */
+  --chart-4: var(--color-success); /* #0f9d58  green */
+  --chart-5: var(--color-warn); /* #d97706  amber */
+
   /* shadcn token bridge — shadcn primitives read these */
   --color-background: var(--color-bg);
   --color-foreground: var(--color-fg);
@@ -133,6 +140,9 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Bare Tailwind `border` utilities fall back to currentColor by default.
+       Pin the default to our line token so shadcn primitives + blocks stay subtle. */
+    border-color: var(--color-border);
   }
 
   html,
