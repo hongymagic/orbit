@@ -38,9 +38,11 @@ const CANNED_REPLIES = [
 
 function pickReply(prompt: string): string {
   const lower = prompt.toLowerCase();
-  if (lower.includes("deploy")) return "Kicking off a deploy against `main`. I'll hold here and stream status events as each step completes.";
-  if (lower.includes("log"))    return "Tailing runtime logs for atlas-web · prod. Ctrl+C to stop.";
-  if (lower.includes("status")) return "All four services are operational. atlas-edge is degraded in the sfo1 region (88ms p50, 2× baseline).";
+  if (lower.includes("deploy"))
+    return "Kicking off a deploy against `main`. I'll hold here and stream status events as each step completes.";
+  if (lower.includes("log")) return "Tailing runtime logs for atlas-web · prod. Ctrl+C to stop.";
+  if (lower.includes("status"))
+    return "All four services are operational. atlas-edge is degraded in the sfo1 region (88ms p50, 2× baseline).";
   return CANNED_REPLIES[Math.floor(Math.random() * CANNED_REPLIES.length)];
 }
 
@@ -51,10 +53,7 @@ export async function POST(req: Request) {
   } catch {}
 
   const last = body.messages?.at(-1);
-  const prompt =
-    last?.content ??
-    last?.parts?.map((p) => p.text ?? "").join(" ") ??
-    "Hello";
+  const prompt = last?.content ?? last?.parts?.map((p) => p.text ?? "").join(" ") ?? "Hello";
 
   const reply = pickReply(prompt);
 
@@ -63,7 +62,9 @@ export async function POST(req: Request) {
     async start(controller) {
       // Minimal UIMessageStream protocol — one message, streamed char by char.
       const id = `msg_${Date.now()}`;
-      controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "start", messageId: id })}\n\n`));
+      controller.enqueue(
+        encoder.encode(`data: ${JSON.stringify({ type: "start", messageId: id })}\n\n`),
+      );
       controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "start-step" })}\n\n`));
 
       for (const chunk of reply.match(/.{1,4}/g) ?? []) {

@@ -15,16 +15,19 @@ export function Metric({ label, value, delta, deltaDir = "flat", data, className
   const deltaColor =
     deltaDir === "up" ? "text-success" : deltaDir === "down" ? "text-error" : "text-fg-subtle";
   return (
-    <div className={cn("relative bg-bg px-[18px] py-4 shadow-[1px_0_0_var(--color-line)] last:shadow-none", className)}>
+    <div
+      className={cn(
+        "relative bg-bg px-[18px] py-4 shadow-[1px_0_0_var(--color-line)] last:shadow-none",
+        className,
+      )}
+    >
       <div className="font-mono text-[11px] text-fg-subtle uppercase tracking-[0.06em] mb-2">
         {label}
       </div>
       <div className="text-[28px] font-semibold tracking-[-0.025em] leading-none tabular-nums">
         {value}
       </div>
-      {delta ? (
-        <div className={cn("mt-2 font-mono text-[11px]", deltaColor)}>{delta}</div>
-      ) : null}
+      {delta ? <div className={cn("mt-2 font-mono text-[11px]", deltaColor)}>{delta}</div> : null}
       {data ? (
         <Sparkline
           data={data}

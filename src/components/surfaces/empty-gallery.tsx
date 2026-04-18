@@ -1,6 +1,13 @@
 "use client";
 
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icon } from "@/components/icons";
@@ -22,9 +29,7 @@ export function EmptyGallery() {
                 <Icon name="bell" size={24} />
               </EmptyMedia>
               <EmptyTitle>All caught up</EmptyTitle>
-              <EmptyDescription>
-                You have no notifications in the last 24 hours.
-              </EmptyDescription>
+              <EmptyDescription>You have no notifications in the last 24 hours.</EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
               <Button variant="outline" size="sm">

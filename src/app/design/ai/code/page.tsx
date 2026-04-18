@@ -41,19 +41,29 @@ export default function AiCode() {
           kicker="Coding agent surface"
           title="Code UI"
           sub="File tree + code block + terminal — the three atoms that build agent coding assistants. Wire these to a tool-calling model that writes files and shell commands."
-          actions={<Badge tone="info" dot>static demo</Badge>}
+          actions={
+            <Badge tone="info" dot>
+              static demo
+            </Badge>
+          }
         />
 
-        <div
-          className="grid gap-4"
-          style={{ gridTemplateColumns: "280px minmax(0, 1fr)" }}
-        >
+        <div className="grid gap-4" style={{ gridTemplateColumns: "280px minmax(0, 1fr)" }}>
           <Card>
             <CardHead title="FileTree" sub="ai-elements/file-tree" />
             <CardBody className="p-0">
               <FileTree
                 className="p-3"
-                defaultExpanded={new Set(["src", "src/app", "src/app/api", "src/app/api/chat", "src/components", "src/components/ai-elements"])}
+                defaultExpanded={
+                  new Set([
+                    "src",
+                    "src/app",
+                    "src/app/api",
+                    "src/app/api/chat",
+                    "src/components",
+                    "src/components/ai-elements",
+                  ])
+                }
               >
                 <FileTreeFolder name="src" path="src">
                   <FileTreeFolder name="app" path="src/app">
@@ -67,8 +77,14 @@ export default function AiCode() {
                   </FileTreeFolder>
                   <FileTreeFolder name="components" path="src/components">
                     <FileTreeFolder name="ai-elements" path="src/components/ai-elements">
-                      <FileTreeFile name="conversation.tsx" path="src/components/ai-elements/conversation.tsx" />
-                      <FileTreeFile name="prompt-input.tsx" path="src/components/ai-elements/prompt-input.tsx" />
+                      <FileTreeFile
+                        name="conversation.tsx"
+                        path="src/components/ai-elements/conversation.tsx"
+                      />
+                      <FileTreeFile
+                        name="prompt-input.tsx"
+                        path="src/components/ai-elements/prompt-input.tsx"
+                      />
                     </FileTreeFolder>
                   </FileTreeFolder>
                 </FileTreeFolder>

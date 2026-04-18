@@ -40,9 +40,15 @@ export default function ComponentsPage() {
             <Button size="sm">Small</Button>
             <Button size="md">Medium</Button>
             <Button size="lg">Large</Button>
-            <Button iconOnly aria-label="Settings"><Icon name="settings" /></Button>
-            <Button iconOnly size="sm" aria-label="More"><Icon name="dots" /></Button>
-            <Button><Icon name="plus" /> New deployment</Button>
+            <Button iconOnly aria-label="Settings">
+              <Icon name="settings" />
+            </Button>
+            <Button iconOnly size="sm" aria-label="More">
+              <Icon name="dots" />
+            </Button>
+            <Button>
+              <Icon name="plus" /> New deployment
+            </Button>
           </div>
         </Section>
 
@@ -53,15 +59,29 @@ export default function ComponentsPage() {
         >
           <div className="flex items-center gap-3 flex-wrap">
             <Badge>Neutral</Badge>
-            <Badge tone="ok" dot>Ready</Badge>
-            <Badge tone="info" dot>Building</Badge>
-            <Badge tone="warn" dot>Queued</Badge>
-            <Badge tone="err" dot>Failed</Badge>
+            <Badge tone="ok" dot>
+              Ready
+            </Badge>
+            <Badge tone="info" dot>
+              Building
+            </Badge>
+            <Badge tone="warn" dot>
+              Queued
+            </Badge>
+            <Badge tone="err" dot>
+              Failed
+            </Badge>
           </div>
           <div className="flex items-center gap-3 flex-wrap mt-3">
-            <Badge tone="neutral" solid>v0.1</Badge>
-            <Badge tone="info" solid>Preview</Badge>
-            <Badge tone="ok" solid>Deployed</Badge>
+            <Badge tone="neutral" solid>
+              v0.1
+            </Badge>
+            <Badge tone="info" solid>
+              Preview
+            </Badge>
+            <Badge tone="ok" solid>
+              Deployed
+            </Badge>
           </div>
         </Section>
 
@@ -71,7 +91,13 @@ export default function ComponentsPage() {
           description="4 equal cells, inline sparkline, shared outer shadow."
         >
           <MetricGrid>
-            <Metric label="Deployments · 7d" value="247" delta="+18" deltaDir="up" data={sparkDeployments} />
+            <Metric
+              label="Deployments · 7d"
+              value="247"
+              delta="+18"
+              deltaDir="up"
+              data={sparkDeployments}
+            />
             <Metric label="Avg build time" value="1m 12s" delta="−9s" deltaDir="up" />
             <Metric label="Success rate" value="99.8%" delta="+0.2 pp" deltaDir="up" />
             <Metric label="Active branches" value="18" delta="+2" deltaDir="up" />
@@ -97,9 +123,19 @@ export default function ComponentsPage() {
           description="Develop · Preview · Ship accents typed into the stage prop."
         >
           <Pipeline>
-            <PipelineStep stage="develop" label="Develop" title="feat/billing-v2" sub="3 commits ahead" />
+            <PipelineStep
+              stage="develop"
+              label="Develop"
+              title="feat/billing-v2"
+              sub="3 commits ahead"
+            />
             <PipelineArrow />
-            <PipelineStep stage="preview" label="Preview" title="dpl_pK3m" sub="building · 22s ETA" />
+            <PipelineStep
+              stage="preview"
+              label="Preview"
+              title="dpl_pK3m"
+              sub="building · 22s ETA"
+            />
             <PipelineArrow />
             <PipelineStep stage="ship" label="Ship" title="Requires approval" sub="2 reviewers" />
           </Pipeline>
@@ -126,7 +162,10 @@ export default function ComponentsPage() {
           path="src/components/icons.tsx"
           description={'18 bespoke 16×16 stroke icons. Import <Icon name="…" />.'}
         >
-          <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(88px, 1fr))" }}>
+          <div
+            className="grid gap-3"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(88px, 1fr))" }}
+          >
             {iconNames.map((name) => (
               <div
                 key={name}

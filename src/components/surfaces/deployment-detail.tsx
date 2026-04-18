@@ -12,10 +12,7 @@ import { type Deployment, statusLabel } from "@/data/deployments";
 export function DeploymentDetail({ deployment }: { deployment: Deployment }) {
   const tone: "ok" | "info" | "warn" | "err" = deployment.status;
   return (
-    <div
-      className="grid gap-4"
-      style={{ gridTemplateColumns: "minmax(0, 1fr) 280px" }}
-    >
+    <div className="grid gap-4" style={{ gridTemplateColumns: "minmax(0, 1fr) 280px" }}>
       <div className="flex flex-col gap-4 min-w-0">
         <Card>
           <CardHead
@@ -45,7 +42,12 @@ export function DeploymentDetail({ deployment }: { deployment: Deployment }) {
           <CardHead title="Pipeline" sub="Develop → Preview → Ship" />
           <CardBody>
             <Pipeline>
-              <PipelineStep stage="develop" label="Develop" title={deployment.branch} sub={`${deployment.author}`} />
+              <PipelineStep
+                stage="develop"
+                label="Develop"
+                title={deployment.branch}
+                sub={`${deployment.author}`}
+              />
               <PipelineArrow />
               <PipelineStep
                 stage="preview"
@@ -105,7 +107,9 @@ export function DeploymentDetail({ deployment }: { deployment: Deployment }) {
 function MetadataRow({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-fg-subtle text-[12px] font-mono uppercase tracking-[0.06em]">{label}</span>
+      <span className="text-fg-subtle text-[12px] font-mono uppercase tracking-[0.06em]">
+        {label}
+      </span>
       <span className={mono ? "font-mono" : undefined}>{value}</span>
     </div>
   );

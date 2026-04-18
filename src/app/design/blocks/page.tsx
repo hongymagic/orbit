@@ -118,7 +118,11 @@ export default function BlocksPage() {
           kicker="Composed patterns"
           title="Blocks"
           sub="Pre-built compositions from the shadcn registry, pulled via bunx shadcn@latest add <name>. They live in src/components/ and /src/app/ as shadcn expects — the token bridge in globals.css styles them automatically."
-          actions={<Badge tone="info" dot>shadcn registry</Badge>}
+          actions={
+            <Badge tone="info" dot>
+              shadcn registry
+            </Badge>
+          }
         />
 
         {byCategory.map(({ cat, items }) =>
@@ -134,7 +138,11 @@ export default function BlocksPage() {
                     <CardHead
                       title={block.name}
                       sub={block.id}
-                      actions={<span className="font-mono text-[10px] text-fg-subtle">{block.category}</span>}
+                      actions={
+                        <span className="font-mono text-[10px] text-fg-subtle">
+                          {block.category}
+                        </span>
+                      }
                     />
                     <CardBody>
                       <div className="text-[13px] text-fg-muted leading-[1.55] mb-3">

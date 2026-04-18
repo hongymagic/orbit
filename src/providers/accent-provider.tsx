@@ -2,13 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
-export type AccentName =
-  | "indigo"
-  | "violet"
-  | "emerald"
-  | "rose"
-  | "amber"
-  | "mono";
+export type AccentName = "indigo" | "violet" | "emerald" | "rose" | "amber" | "mono";
 
 export type Accent = {
   name: AccentName;
@@ -17,12 +11,12 @@ export type Accent = {
 };
 
 export const ACCENTS: readonly Accent[] = [
-  { name: "indigo",  color: "#3b5bff", label: "Indigo" },
-  { name: "violet",  color: "#7a5cff", label: "Violet" },
+  { name: "indigo", color: "#3b5bff", label: "Indigo" },
+  { name: "violet", color: "#7a5cff", label: "Violet" },
   { name: "emerald", color: "#10a37f", label: "Emerald" },
-  { name: "rose",    color: "#e5484d", label: "Rose" },
-  { name: "amber",   color: "#e08600", label: "Amber" },
-  { name: "mono",    color: "#171717", label: "Mono" },
+  { name: "rose", color: "#e5484d", label: "Rose" },
+  { name: "amber", color: "#e08600", label: "Amber" },
+  { name: "mono", color: "#171717", label: "Mono" },
 ] as const;
 
 type AccentContextValue = {

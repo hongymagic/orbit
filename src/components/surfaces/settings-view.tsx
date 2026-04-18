@@ -4,13 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-  FieldSet,
-} from "@/components/ui/field";
+import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
@@ -30,10 +24,10 @@ import { Badge } from "@/components/ui/badge";
 import { ACCENTS, VARIATIONS, useAccent, useTheme, useVariation } from "@/providers";
 
 const teamMembers = [
-  { initials: "RL", name: "Rhea Lin",  email: "rhea@orbit.app",   role: "Admin" },
-  { initials: "KP", name: "Kian Park", email: "kian@orbit.app",   role: "Member" },
-  { initials: "DS", name: "Dana Soto", email: "dana@orbit.app",   role: "Member" },
-  { initials: "AT", name: "Alex Tran", email: "alex@orbit.app",   role: "Billing" },
+  { initials: "RL", name: "Rhea Lin", email: "rhea@orbit.app", role: "Admin" },
+  { initials: "KP", name: "Kian Park", email: "kian@orbit.app", role: "Member" },
+  { initials: "DS", name: "Dana Soto", email: "dana@orbit.app", role: "Member" },
+  { initials: "AT", name: "Alex Tran", email: "alex@orbit.app", role: "Billing" },
 ];
 
 export function SettingsView() {
@@ -102,9 +96,7 @@ function ProfileTab() {
               <Field>
                 <FieldLabel htmlFor="settings-email">Email</FieldLabel>
                 <Input id="settings-email" type="email" value={email} readOnly />
-                <FieldDescription>
-                  Contact support to change your primary email.
-                </FieldDescription>
+                <FieldDescription>Contact support to change your primary email.</FieldDescription>
               </Field>
               <Field>
                 <FieldLabel htmlFor="settings-bio">Bio</FieldLabel>
@@ -270,10 +262,22 @@ function NotificationsTab() {
         <div className="space-y-4">
           {(
             [
-              { key: "deployments", label: "Deployment status",   sub: "Every production deploy result." },
-              { key: "rollbacks",   label: "Rollbacks",           sub: "When a production deploy is reverted." },
-              { key: "secrets",     label: "Secret rotations",    sub: "7 days before a secret is due." },
-              { key: "weekly",      label: "Weekly digest",       sub: "Platform activity summary every Monday." },
+              {
+                key: "deployments",
+                label: "Deployment status",
+                sub: "Every production deploy result.",
+              },
+              {
+                key: "rollbacks",
+                label: "Rollbacks",
+                sub: "When a production deploy is reverted.",
+              },
+              { key: "secrets", label: "Secret rotations", sub: "7 days before a secret is due." },
+              {
+                key: "weekly",
+                label: "Weekly digest",
+                sub: "Platform activity summary every Monday.",
+              },
             ] as const
           ).map((p) => (
             <div key={p.key} className="flex items-start justify-between gap-4">

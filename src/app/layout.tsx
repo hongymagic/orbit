@@ -17,9 +17,7 @@ export const metadata: Metadata = {
     "A shadow-as-border design system foundation. Next.js 16, Tailwind v4, shadcn, ai-elements.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"

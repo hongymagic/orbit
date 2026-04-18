@@ -13,13 +13,46 @@ type Surface = {
 };
 
 const surfaces: readonly Surface[] = [
-  { title: "Signup",  description: "Zod-validated signup form with error toasts.",              gallery: "/_design/surfaces/signup",   product: "/signup" },
-  { title: "Login",   description: "shadcn login-01 block — email + password + brand header.",  gallery: "/_design/surfaces/login",    product: "/login" },
-  { title: "Settings", description: "Tabs for Profile · Appearance · Team · Notifications. Live state wired to providers.", gallery: "/_design/surfaces/settings", product: "/settings" },
-  { title: "Billing", description: "Plan cards, live usage meters, invoice table.",             gallery: "/_design/surfaces/billing",  product: "/billing" },
-  { title: "Empty states", description: "Three common empty-state flavors (inbox, search, onboarding).", gallery: "/_design/surfaces/empty" },
-  { title: "Errors", description: "error.tsx + not-found.tsx patterns using shadcn Empty.",    gallery: "/_design/surfaces/errors" },
-  { title: "Deployment detail", description: "Header, pipeline, build output, metadata sidebar.", gallery: "/_design/surfaces/detail" },
+  {
+    title: "Signup",
+    description: "Zod-validated signup form with error toasts.",
+    gallery: "/_design/surfaces/signup",
+    product: "/signup",
+  },
+  {
+    title: "Login",
+    description: "shadcn login-01 block — email + password + brand header.",
+    gallery: "/_design/surfaces/login",
+    product: "/login",
+  },
+  {
+    title: "Settings",
+    description:
+      "Tabs for Profile · Appearance · Team · Notifications. Live state wired to providers.",
+    gallery: "/_design/surfaces/settings",
+    product: "/settings",
+  },
+  {
+    title: "Billing",
+    description: "Plan cards, live usage meters, invoice table.",
+    gallery: "/_design/surfaces/billing",
+    product: "/billing",
+  },
+  {
+    title: "Empty states",
+    description: "Three common empty-state flavors (inbox, search, onboarding).",
+    gallery: "/_design/surfaces/empty",
+  },
+  {
+    title: "Errors",
+    description: "error.tsx + not-found.tsx patterns using shadcn Empty.",
+    gallery: "/_design/surfaces/errors",
+  },
+  {
+    title: "Deployment detail",
+    description: "Header, pipeline, build output, metadata sidebar.",
+    gallery: "/_design/surfaces/detail",
+  },
 ];
 
 export default function SurfacesIndex() {
@@ -40,9 +73,7 @@ export default function SurfacesIndex() {
             <Card key={s.title}>
               <CardHead title={s.title} />
               <CardBody>
-                <div className="text-[13px] text-fg-muted leading-[1.55] mb-3">
-                  {s.description}
-                </div>
+                <div className="text-[13px] text-fg-muted leading-[1.55] mb-3">{s.description}</div>
                 <div className="flex items-center gap-2">
                   <Link
                     href={s.gallery as never}

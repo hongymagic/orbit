@@ -34,7 +34,10 @@ export function Topbar({
       style={{ height: "var(--topbar-h)" }}
     >
       <div className="flex items-center gap-2 text-[13px] text-fg-muted">
-        <BrandMark size={20} letter={typeof crumbs[0] === "string" ? crumbs[0][0].toUpperCase() : "A"} />
+        <BrandMark
+          size={20}
+          letter={typeof crumbs[0] === "string" ? crumbs[0][0].toUpperCase() : "A"}
+        />
         {crumbs.map((entry, i) => {
           const label = typeof entry === "string" ? entry : entry.label;
           const last = i === crumbs.length - 1;
@@ -65,7 +68,13 @@ export function Topbar({
         </kbd>
       </button>
 
-      <Button variant="ghost" iconOnly size="md" onClick={onOpenNotifications} aria-label="Notifications">
+      <Button
+        variant="ghost"
+        iconOnly
+        size="md"
+        onClick={onOpenNotifications}
+        aria-label="Notifications"
+      >
         <Icon name="bell" />
       </Button>
 

@@ -6,13 +6,7 @@ import { cn } from "@/lib/utils";
 import { useHotkey } from "@/lib/use-hotkey";
 import { Icon } from "@/components/icons";
 import { Button } from "@/components/orbit/button";
-import {
-  ACCENTS,
-  VARIATIONS,
-  useAccent,
-  useTheme,
-  useVariation,
-} from "@/providers";
+import { ACCENTS, VARIATIONS, useAccent, useTheme, useVariation } from "@/providers";
 
 export function TweaksPanel({ initialOpen = false }: { initialOpen?: boolean }) {
   const [open, setOpen] = useState(initialOpen);

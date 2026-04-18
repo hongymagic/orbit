@@ -6,7 +6,7 @@ export type Variation = "conservative" | "confident" | "experimental";
 
 export const VARIATIONS: readonly { value: Variation; label: string; short: string }[] = [
   { value: "conservative", label: "Conservative", short: "Safe" },
-  { value: "confident",    label: "Confident",    short: "Bold" },
+  { value: "confident", label: "Confident", short: "Bold" },
   { value: "experimental", label: "Experimental", short: "Lab" },
 ] as const;
 

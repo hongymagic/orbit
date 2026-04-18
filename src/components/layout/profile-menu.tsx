@@ -163,7 +163,9 @@ export function ProfileMenu({
           <DropdownMenuSubTrigger>
             <Icon name="cmd" />
             Variation
-            <span className="ml-auto text-[11px] font-mono text-fg-subtle capitalize">{variation}</span>
+            <span className="ml-auto text-[11px] font-mono text-fg-subtle capitalize">
+              {variation}
+            </span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>

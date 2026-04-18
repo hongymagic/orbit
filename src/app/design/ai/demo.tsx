@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 
-import {
-  Conversation,
-  ConversationContent,
-} from "@/components/ai-elements/conversation";
+import { Conversation, ConversationContent } from "@/components/ai-elements/conversation";
 import { Message, MessageContent } from "@/components/ai-elements/message";
 import {
   PromptInput,
@@ -27,8 +24,7 @@ const initialTurns: Turn[] = [
   {
     id: "t2",
     role: "assistant",
-    text:
-      "Preview queued for `feat/billing-v2`. Here's the build config it'll use — same as production minus `OPENAI_API_KEY` which is gated to prod.",
+    text: "Preview queued for `feat/billing-v2`. Here's the build config it'll use — same as production minus `OPENAI_API_KEY` which is gated to prod.",
     code: `{
   "env": "preview",
   "buildCommand": "bun run build",

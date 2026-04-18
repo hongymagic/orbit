@@ -7,18 +7,10 @@ export function PageShell({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <div className={cn("flex flex-col min-w-0", className)}>{children}</div>
-  );
+  return <div className={cn("flex flex-col min-w-0", className)}>{children}</div>;
 }
 
-export function Page({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+export function Page({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div
       className={cn(
@@ -50,9 +42,7 @@ export function PageHead({
       <div className="min-w-0">
         {kicker ? <div className="text-kicker">{kicker}</div> : null}
         <h1 className="orbit-h1 text-h1 mt-2">{title}</h1>
-        {sub ? (
-          <div className="text-[14px] text-fg-muted mt-1.5 max-w-[560px]">{sub}</div>
-        ) : null}
+        {sub ? <div className="text-[14px] text-fg-muted mt-1.5 max-w-[560px]">{sub}</div> : null}
       </div>
       {actions ? <div className="flex items-center gap-2">{actions}</div> : null}
     </div>

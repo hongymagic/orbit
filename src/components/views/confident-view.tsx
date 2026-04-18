@@ -11,7 +11,9 @@ import { Grid, GridSplit, Page } from "@/components/layout/page-shell";
 import { services, serviceStatusLabel, type Service } from "@/data/services";
 
 const statusTone: Record<Service["status"], "ok" | "warn" | "err"> = {
-  ok: "ok", warn: "warn", err: "err",
+  ok: "ok",
+  warn: "warn",
+  err: "err",
 };
 
 const columns: readonly Column<Service>[] = [
@@ -25,7 +27,11 @@ const columns: readonly Column<Service>[] = [
       </div>
     ),
   },
-  { key: "region",  header: "Region",  cell: (s) => <span className="font-mono text-fg-muted">{s.region}</span> },
+  {
+    key: "region",
+    header: "Region",
+    cell: (s) => <span className="font-mono text-fg-muted">{s.region}</span>,
+  },
   {
     key: "status",
     header: "Status",
@@ -35,8 +41,18 @@ const columns: readonly Column<Service>[] = [
       </Badge>
     ),
   },
-  { key: "latency", header: "P50 latency", align: "right", cell: (s) => <span className="font-mono">{s.latency}</span> },
-  { key: "req",     header: "Req · 24h",   align: "right", cell: (s) => <span className="font-mono text-fg-muted">{s.req}</span> },
+  {
+    key: "latency",
+    header: "P50 latency",
+    align: "right",
+    cell: (s) => <span className="font-mono">{s.latency}</span>,
+  },
+  {
+    key: "req",
+    header: "Req · 24h",
+    align: "right",
+    cell: (s) => <span className="font-mono text-fg-muted">{s.req}</span>,
+  },
   {
     key: "cpu",
     header: "CPU",
@@ -63,7 +79,12 @@ export function ConfidentView() {
     <Page className="pt-10">
       <section
         className="mb-7"
-        style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr", gap: 24, alignItems: "stretch" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1.6fr 1fr",
+          gap: 24,
+          alignItems: "stretch",
+        }}
       >
         <div className="relative overflow-hidden rounded-lg bg-bg-subtle p-8 shadow-[0_0_0_1px_var(--color-line),0_2px_2px_rgb(0_0_0/0.02)]">
           <div
@@ -72,17 +93,27 @@ export function ConfidentView() {
             aria-hidden="true"
           />
           <div className="relative text-kicker">Orbit · platform</div>
-          <h1 className="orbit-h1 relative mt-2.5" style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: "-0.035em", maxWidth: 560 }}>
+          <h1
+            className="orbit-h1 relative mt-2.5"
+            style={{ fontSize: 44, lineHeight: 1.05, letterSpacing: "-0.035em", maxWidth: 560 }}
+          >
             Ship code at the speed of thought.
           </h1>
           <div className="relative mt-3.5 text-fg-muted max-w-[480px] text-[15px]">
-            Four services. One control plane. Deploy on push, preview on PR, promote with a click — with guardrails your security team actually trusts.
+            Four services. One control plane. Deploy on push, preview on PR, promote with a click —
+            with guardrails your security team actually trusts.
           </div>
           <div className="relative flex gap-2 mt-5 items-center">
-            <Button variant="accent" size="lg">Start a deployment</Button>
-            <Button size="lg" variant="ghost">Open runbook</Button>
+            <Button variant="accent" size="lg">
+              Start a deployment
+            </Button>
+            <Button size="lg" variant="ghost">
+              Open runbook
+            </Button>
             <div className="ml-3 text-fg-subtle">
-              <Badge tone="ok" dot>all systems nominal</Badge>
+              <Badge tone="ok" dot>
+                all systems nominal
+              </Badge>
             </div>
           </div>
         </div>
@@ -90,7 +121,10 @@ export function ConfidentView() {
         <div className="bg-bg rounded-lg p-5 shadow-[0_0_0_1px_var(--color-line),0_2px_2px_rgb(0_0_0/0.02)] flex flex-col justify-between">
           <div>
             <div className="text-kicker">This month</div>
-            <div className="mt-2.5 tabular-nums font-semibold leading-none" style={{ fontSize: 48, letterSpacing: "-0.035em" }}>
+            <div
+              className="mt-2.5 tabular-nums font-semibold leading-none"
+              style={{ fontSize: 48, letterSpacing: "-0.035em" }}
+            >
               1,842
             </div>
             <div className="mt-1 text-fg-muted text-[13px]">deployments across 4 services</div>
@@ -121,18 +155,38 @@ export function ConfidentView() {
           <CardHead title="Quick start" sub="Wire up the CLI" />
           <CardBody>
             <CodeSnippet>
-              <div><span className="code-c"># install the Orbit CLI</span></div>
-              <div><span className="code-k">curl</span> -fsSL orbit.app/install <span className="code-n">|</span> sh</div>
-              <div className="mt-2.5"><span className="code-c"># link an existing project</span></div>
-              <div><span className="code-k">orbit</span> link <span className="code-s">./my-app</span></div>
-              <div className="mt-2.5"><span className="code-c"># deploy a preview from your laptop</span></div>
-              <div><span className="code-k">orbit</span> deploy <span className="code-n">--env</span>=<span className="code-s">preview</span></div>
+              <div>
+                <span className="code-c"># install the Orbit CLI</span>
+              </div>
+              <div>
+                <span className="code-k">curl</span> -fsSL orbit.app/install{" "}
+                <span className="code-n">|</span> sh
+              </div>
+              <div className="mt-2.5">
+                <span className="code-c"># link an existing project</span>
+              </div>
+              <div>
+                <span className="code-k">orbit</span> link <span className="code-s">./my-app</span>
+              </div>
+              <div className="mt-2.5">
+                <span className="code-c"># deploy a preview from your laptop</span>
+              </div>
+              <div>
+                <span className="code-k">orbit</span> deploy <span className="code-n">--env</span>=
+                <span className="code-s">preview</span>
+              </div>
             </CodeSnippet>
             <div className="flex items-center gap-2 mt-4">
-              <Button size="sm" variant="ghost">Copy</Button>
-              <Button size="sm" variant="ghost">Open docs</Button>
+              <Button size="sm" variant="ghost">
+                Copy
+              </Button>
+              <Button size="sm" variant="ghost">
+                Open docs
+              </Button>
               <div className="flex-1" />
-              <Badge tone="info" dot>CLI v3.4.1</Badge>
+              <Badge tone="info" dot>
+                CLI v3.4.1
+              </Badge>
             </div>
           </CardBody>
         </Card>
@@ -146,8 +200,8 @@ export function ConfidentView() {
               <div className="flex flex-col gap-3">
                 {[
                   { b: "feat/billing-v2", pct: 78, eta: "22s" },
-                  { b: "fix/rate-limit",  pct: 34, eta: "1m 08s" },
-                  { b: "chore/deps",      pct: 12, eta: "1m 42s" },
+                  { b: "fix/rate-limit", pct: 34, eta: "1m 08s" },
+                  { b: "chore/deps", pct: 12, eta: "1m 42s" },
                 ].map((b) => (
                   <div key={b.b}>
                     <div className="flex justify-between">
@@ -195,10 +249,10 @@ export function ConfidentView() {
             <CardBody>
               <div className="flex flex-col gap-2">
                 {[
-                  ["STRIPE_WEBHOOK_KEY",  "rotated 3d",  "ok"],
-                  ["DATABASE_URL",        "rotated 11d", "ok"],
-                  ["OPENAI_API_KEY",      "due in 4d",   "warn"],
-                  ["AUTH_SIGNING_SECRET", "due in 12d",  "neutral"],
+                  ["STRIPE_WEBHOOK_KEY", "rotated 3d", "ok"],
+                  ["DATABASE_URL", "rotated 11d", "ok"],
+                  ["OPENAI_API_KEY", "due in 4d", "warn"],
+                  ["AUTH_SIGNING_SECRET", "due in 12d", "neutral"],
                 ].map(([k, t, tone]) => (
                   <div key={k as string} className="flex justify-between">
                     <span className="font-mono text-[12px]">{k}</span>

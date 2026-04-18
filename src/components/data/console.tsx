@@ -9,12 +9,12 @@ export type LogEntry = {
 };
 
 const levelClass: Record<LogLevel, string> = {
-  ok:    "text-success",
-  info:  "text-accent",
-  warn:  "text-warn",
+  ok: "text-success",
+  info: "text-accent",
+  warn: "text-warn",
   error: "text-error",
   ready: "text-success",
-  pass:  "text-success",
+  pass: "text-success",
 };
 
 export function Console({
@@ -48,17 +48,9 @@ export function Console({
 
 export function LogRow({ time, level, message }: LogEntry) {
   return (
-    <div
-      className="grid items-baseline"
-      style={{ gridTemplateColumns: "60px 68px 1fr", gap: 14 }}
-    >
+    <div className="grid items-baseline" style={{ gridTemplateColumns: "60px 68px 1fr", gap: 14 }}>
       <span className="text-fg-faint text-[11px]">{time}</span>
-      <span
-        className={cn(
-          "text-[10px] uppercase tracking-[0.08em]",
-          levelClass[level],
-        )}
-      >
+      <span className={cn("text-[10px] uppercase tracking-[0.08em]", levelClass[level])}>
         {level}
       </span>
       <span className="text-fg">{message}</span>

@@ -8,12 +8,14 @@ import {
   ChainOfThoughtHeader,
   ChainOfThoughtStep,
 } from "@/components/ai-elements/chain-of-thought";
+import { Reasoning, ReasoningContent, ReasoningTrigger } from "@/components/ai-elements/reasoning";
 import {
-  Reasoning,
-  ReasoningContent,
-  ReasoningTrigger,
-} from "@/components/ai-elements/reasoning";
-import { Task, TaskContent, TaskItem, TaskItemFile, TaskTrigger } from "@/components/ai-elements/task";
+  Task,
+  TaskContent,
+  TaskItem,
+  TaskItemFile,
+  TaskTrigger,
+} from "@/components/ai-elements/task";
 
 import { Topbar } from "@/components/layout/topbar";
 import { Page, PageHead } from "@/components/layout/page-shell";
@@ -31,13 +33,14 @@ export default function AiReasoning() {
           kicker="Multi-step agents"
           title="Reasoning UI"
           sub="ai-elements surfaces for chain-of-thought, collapsible reasoning, and task breakdowns. All static here — wire to tool-calling models to stream real traces."
-          actions={<Badge tone="info" dot>static demo</Badge>}
+          actions={
+            <Badge tone="info" dot>
+              static demo
+            </Badge>
+          }
         />
 
-        <div
-          className="grid gap-4"
-          style={{ gridTemplateColumns: "1fr 1fr" }}
-        >
+        <div className="grid gap-4" style={{ gridTemplateColumns: "1fr 1fr" }}>
           <Card>
             <CardHead title="ChainOfThought" sub="ai-elements/chain-of-thought" />
             <CardBody>

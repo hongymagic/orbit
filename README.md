@@ -19,16 +19,16 @@ Open [http://localhost:3000](http://localhost:3000) for the landing page, or jum
 
 ## Stack
 
-| Layer | Choice |
-|-------|--------|
-| Framework | Next.js 16 (App Router, Turbopack, React 19) |
-| Styling   | Tailwind v4 (CSS-first tokens via `@theme`) |
-| Fonts     | Geist Sans + Geist Mono via `geist/font` |
+| Layer      | Choice                                               |
+| ---------- | ---------------------------------------------------- |
+| Framework  | Next.js 16 (App Router, Turbopack, React 19)         |
+| Styling    | Tailwind v4 (CSS-first tokens via `@theme`)          |
+| Fonts      | Geist Sans + Geist Mono via `geist/font`             |
 | Primitives | shadcn (Radix) for interactive/a11y-heavy components |
-| AI UI     | ai-elements (vendored, 48 components) |
-| State     | React Context (Theme · Accent · Variation) |
-| Runtime   | Bun |
-| Language  | TypeScript (strict) |
+| AI UI      | ai-elements (vendored, 48 components)                |
+| State      | React Context (Theme · Accent · Variation)           |
+| Runtime    | Bun                                                  |
+| Language   | TypeScript (strict)                                  |
 
 ## Scripts
 
@@ -43,17 +43,17 @@ All scripts run with `NODE_OPTIONS='--use-system-ca'` so corporate certificates 
 
 ## Routes
 
-| Route | Purpose |
-|-------|---------|
-| `/`                        | Intro / landing |
-| `/_design`                 | Design system index |
-| `/_design/tokens`          | Live token reference |
-| `/_design/components`      | Every component × every variant |
-| `/_design/conservative`    | Data-dense layout variation |
-| `/_design/confident`       | Hero-led layout variation |
-| `/_design/experimental`    | Terminal-forward layout variation |
-| `/_design/ai`              | ai-elements demo (stubbed) |
-| `/api/chat`                | Stub chat endpoint |
+| Route                   | Purpose                           |
+| ----------------------- | --------------------------------- |
+| `/`                     | Intro / landing                   |
+| `/_design`              | Design system index               |
+| `/_design/tokens`       | Live token reference              |
+| `/_design/components`   | Every component × every variant   |
+| `/_design/conservative` | Data-dense layout variation       |
+| `/_design/confident`    | Hero-led layout variation         |
+| `/_design/experimental` | Terminal-forward layout variation |
+| `/_design/ai`           | ai-elements demo (stubbed)        |
+| `/api/chat`             | Stub chat endpoint                |
 
 `/_design` is rewritten to `/design` on disk — both resolve, but `/_design` is canonical (prefixed to signal "internal reference, not product surface").
 

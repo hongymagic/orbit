@@ -43,11 +43,11 @@ const tiers = [
 ];
 
 const invoices = [
-  { id: "INV-104", date: "Apr 2026",  amount: "$240.00", status: "Paid",    due: "—" },
-  { id: "INV-103", date: "Mar 2026",  amount: "$240.00", status: "Paid",    due: "—" },
-  { id: "INV-102", date: "Feb 2026",  amount: "$220.00", status: "Paid",    due: "—" },
-  { id: "INV-101", date: "Jan 2026",  amount: "$220.00", status: "Paid",    due: "—" },
-  { id: "INV-100", date: "Dec 2025",  amount: "$220.00", status: "Paid",    due: "—" },
+  { id: "INV-104", date: "Apr 2026", amount: "$240.00", status: "Paid", due: "—" },
+  { id: "INV-103", date: "Mar 2026", amount: "$240.00", status: "Paid", due: "—" },
+  { id: "INV-102", date: "Feb 2026", amount: "$220.00", status: "Paid", due: "—" },
+  { id: "INV-101", date: "Jan 2026", amount: "$220.00", status: "Paid", due: "—" },
+  { id: "INV-100", date: "Dec 2025", amount: "$220.00", status: "Paid", due: "—" },
 ];
 
 export function BillingView() {
@@ -81,7 +81,9 @@ export function BillingView() {
               <CardContent className="space-y-4">
                 <div className="flex items-baseline gap-1.5">
                   <div className="text-[32px] font-semibold tracking-[-0.025em]">{tier.price}</div>
-                  {tier.unit ? <div className="text-muted-foreground text-sm">{tier.unit}</div> : null}
+                  {tier.unit ? (
+                    <div className="text-muted-foreground text-sm">{tier.unit}</div>
+                  ) : null}
                 </div>
                 <ul className="space-y-1.5 text-[13px] text-muted-foreground">
                   {tier.features.map((f) => (
@@ -110,10 +112,10 @@ export function BillingView() {
         </h2>
         <Card>
           <CardContent className="pt-6 space-y-5">
-            <UsageBar label="Deployments"      used={842}   cap={2000} unit="" />
-            <UsageBar label="Preview envs"     used={14}    cap={20}   unit="" />
-            <UsageBar label="Build minutes"    used={1_240} cap={5_000} unit="min" />
-            <UsageBar label="Edge bandwidth"   used={128}   cap={500}  unit="GB" />
+            <UsageBar label="Deployments" used={842} cap={2000} unit="" />
+            <UsageBar label="Preview envs" used={14} cap={20} unit="" />
+            <UsageBar label="Build minutes" used={1_240} cap={5_000} unit="min" />
+            <UsageBar label="Edge bandwidth" used={128} cap={500} unit="GB" />
           </CardContent>
         </Card>
       </section>
@@ -162,7 +164,17 @@ export function BillingView() {
   );
 }
 
-function UsageBar({ label, used, cap, unit }: { label: string; used: number; cap: number; unit: string }) {
+function UsageBar({
+  label,
+  used,
+  cap,
+  unit,
+}: {
+  label: string;
+  used: number;
+  cap: number;
+  unit: string;
+}) {
   const pct = Math.min(100, (used / cap) * 100);
   const warn = pct > 75;
   return (

@@ -14,7 +14,10 @@ export default function GallerySettings() {
           sub="Multi-tab settings with live state. Appearance tab mutates the live Theme/Accent/Variation providers. Real route: /settings."
         />
         <Card>
-          <CardHead title="Live surface" sub="Changes persist — try swapping accents on the Appearance tab" />
+          <CardHead
+            title="Live surface"
+            sub="Changes persist — try swapping accents on the Appearance tab"
+          />
           <CardBody>
             <SettingsView />
           </CardBody>

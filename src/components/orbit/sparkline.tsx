@@ -27,9 +27,7 @@ export function Sparkline({
     return { x, y };
   });
   const line = points.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
-  const areaD = area
-    ? `M 0,${height} L ${line.replace(/ /g, " L ")} L ${width},${height} Z`
-    : null;
+  const areaD = area ? `M 0,${height} L ${line.replace(/ /g, " L ")} L ${width},${height} Z` : null;
   return (
     <svg
       className={cn("opacity-60", className)}

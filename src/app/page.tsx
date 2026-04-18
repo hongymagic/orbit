@@ -8,23 +8,31 @@ export default function HomePage() {
     <main className="min-h-screen grid place-items-center px-6 bg-bg text-fg">
       <div className="max-w-[640px] w-full">
         <div className="text-kicker mb-3">Orbit · Foundation</div>
-        <h1 className="text-h1 mb-4">
-          A design-system foundation, not an app.
-        </h1>
+        <h1 className="text-h1 mb-4">A design-system foundation, not an app.</h1>
         <p className="text-[16px] text-fg-muted leading-[1.7] mb-6">
-          This repo is a <span className="font-mono text-fg">Next.js 16</span> scaffold
-          with <span className="font-mono text-fg">Tailwind v4</span>,{" "}
+          This repo is a <span className="font-mono text-fg">Next.js 16</span> scaffold with{" "}
+          <span className="font-mono text-fg">Tailwind v4</span>,{" "}
           <span className="font-mono text-fg">shadcn</span> primitives, and{" "}
-          <span className="font-mono text-fg">ai-elements</span> all re-skinned to
-          the Orbit shadow-as-border token layer. Build the real product on top.
+          <span className="font-mono text-fg">ai-elements</span> all re-skinned to the Orbit
+          shadow-as-border token layer. Build the real product on top.
         </p>
 
         <div className="flex items-center gap-2 mb-8 flex-wrap">
-          <Badge tone="info" dot>Geist</Badge>
-          <Badge tone="info" dot>Tailwind v4</Badge>
-          <Badge tone="info" dot>Bun</Badge>
-          <Badge tone="info" dot>shadcn</Badge>
-          <Badge tone="info" dot>ai-elements</Badge>
+          <Badge tone="info" dot>
+            Geist
+          </Badge>
+          <Badge tone="info" dot>
+            Tailwind v4
+          </Badge>
+          <Badge tone="info" dot>
+            Bun
+          </Badge>
+          <Badge tone="info" dot>
+            shadcn
+          </Badge>
+          <Badge tone="info" dot>
+            ai-elements
+          </Badge>
         </div>
 
         <div className="flex items-center gap-3 flex-wrap">

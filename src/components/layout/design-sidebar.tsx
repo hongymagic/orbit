@@ -12,7 +12,8 @@ import { ProfileMenu } from "./profile-menu";
 export function DesignSidebar() {
   const pathname = usePathname();
   const isActive = (href: string) => {
-    if (href === "/_design" || href === "/design") return pathname === "/_design" || pathname === "/design";
+    if (href === "/_design" || href === "/design")
+      return pathname === "/_design" || pathname === "/design";
     return pathname.startsWith(href) || pathname.startsWith(href.replace("/_design", "/design"));
   };
 

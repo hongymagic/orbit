@@ -10,56 +10,56 @@
    ============================================================ */
 @theme {
   /* neutrals */
-  --color-bg:        #ffffff;
+  --color-bg: #ffffff;
   --color-bg-subtle: #fafafa;
-  --color-bg-muted:  #f5f5f5;
-  --color-fg:        #151515;
-  --color-fg-muted:  #525252;
+  --color-bg-muted: #f5f5f5;
+  --color-fg: #151515;
+  --color-fg-muted: #525252;
   --color-fg-subtle: #8a8a8a;
-  --color-fg-faint:  #b5b5b5;
+  --color-fg-faint: #b5b5b5;
 
   /* line weights */
-  --color-line:         rgb(0 0 0 / 0.08);
-  --color-line-strong:  rgb(0 0 0 / 0.14);
-  --color-line-subtle:  rgb(0 0 0 / 0.04);
+  --color-line: rgb(0 0 0 / 0.08);
+  --color-line-strong: rgb(0 0 0 / 0.14);
+  --color-line-subtle: rgb(0 0 0 / 0.04);
 
   /* accent — overridden at runtime by AccentProvider */
-  --color-accent:      #7a5cff;
-  --color-accent-fg:   #ffffff;
-  --color-accent-soft:   color-mix(in oklab, var(--color-accent) 10%, transparent);
+  --color-accent: #7a5cff;
+  --color-accent-fg: #ffffff;
+  --color-accent-soft: color-mix(in oklab, var(--color-accent) 10%, transparent);
   --color-accent-soft-2: color-mix(in oklab, var(--color-accent) 16%, transparent);
-  --color-accent-ring:   color-mix(in oklab, var(--color-accent) 30%, transparent);
+  --color-accent-ring: color-mix(in oklab, var(--color-accent) 30%, transparent);
 
   /* workflow pipeline colors */
   --color-develop: #0a72ef;
   --color-preview: #de1d8d;
-  --color-ship:    #ff5b4f;
+  --color-ship: #ff5b4f;
 
   /* semantic */
   --color-success: #0f9d58;
-  --color-warn:    #d97706;
-  --color-error:   #dc2626;
-  --color-info:    var(--color-accent);
+  --color-warn: #d97706;
+  --color-error: #dc2626;
+  --color-info: var(--color-accent);
 
   /* shadcn token bridge — shadcn primitives read these */
-  --color-background:         var(--color-bg);
-  --color-foreground:          var(--color-fg);
-  --color-card:                var(--color-bg);
-  --color-card-foreground:     var(--color-fg);
-  --color-popover:             var(--color-bg);
-  --color-popover-foreground:  var(--color-fg);
-  --color-primary:             var(--color-fg);
-  --color-primary-foreground:  var(--color-bg);
-  --color-secondary:           var(--color-bg-muted);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-bg);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-bg);
+  --color-popover-foreground: var(--color-fg);
+  --color-primary: var(--color-fg);
+  --color-primary-foreground: var(--color-bg);
+  --color-secondary: var(--color-bg-muted);
   --color-secondary-foreground: var(--color-fg);
-  --color-muted:               var(--color-bg-muted);
-  --color-muted-foreground:    var(--color-fg-muted);
-  --color-accent-foreground:   var(--color-accent-fg);
-  --color-destructive:         var(--color-error);
+  --color-muted: var(--color-bg-muted);
+  --color-muted-foreground: var(--color-fg-muted);
+  --color-accent-foreground: var(--color-accent-fg);
+  --color-destructive: var(--color-error);
   --color-destructive-foreground: #ffffff;
-  --color-border:              var(--color-line);
-  --color-input:               var(--color-line);
-  --color-ring:                var(--color-accent-ring);
+  --color-border: var(--color-line);
+  --color-input: var(--color-line);
+  --color-ring: var(--color-accent-ring);
 
   /* radii */
   --radius: 8px;
@@ -71,10 +71,11 @@
   --radius-pill: 9999px;
 
   /* shadow recipes — the shadow-as-border system */
-  --shadow-ring-1:      inset 0 0 0 1px var(--color-line);
-  --shadow-ring-2:      inset 0 0 0 1px var(--color-line-strong);
-  --shadow-card:        0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.02);
-  --shadow-card-lifted: 0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.03), 0 8px 16px -8px rgb(0 0 0 / 0.06);
+  --shadow-ring-1: inset 0 0 0 1px var(--color-line);
+  --shadow-ring-2: inset 0 0 0 1px var(--color-line-strong);
+  --shadow-card: 0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.02);
+  --shadow-card-lifted:
+    0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.03), 0 8px 16px -8px rgb(0 0 0 / 0.06);
 
   /* typography */
   --font-sans: var(--font-geist-sans), -apple-system, "Segoe UI", sans-serif;
@@ -89,38 +90,39 @@
    Dark theme
    ============================================================ */
 [data-theme="dark"] {
-  --color-bg:        #0b0b0c;
+  --color-bg: #0b0b0c;
   --color-bg-subtle: #0f0f11;
-  --color-bg-muted:  #141416;
-  --color-fg:        #f2f2f3;
-  --color-fg-muted:  #a0a0a5;
+  --color-bg-muted: #141416;
+  --color-fg: #f2f2f3;
+  --color-fg-muted: #a0a0a5;
   --color-fg-subtle: #6e6e74;
-  --color-fg-faint:  #474749;
+  --color-fg-faint: #474749;
 
-  --color-line:        rgb(255 255 255 / 0.08);
+  --color-line: rgb(255 255 255 / 0.08);
   --color-line-strong: rgb(255 255 255 / 0.14);
   --color-line-subtle: rgb(255 255 255 / 0.04);
 
   --color-accent-fg: #ffffff;
 
-  --shadow-card:        0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.3);
-  --shadow-card-lifted: 0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.4), 0 8px 16px -8px rgb(0 0 0 / 0.6);
+  --shadow-card: 0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.3);
+  --shadow-card-lifted:
+    0 0 0 1px var(--color-line), 0 2px 2px rgb(0 0 0 / 0.4), 0 8px 16px -8px rgb(0 0 0 / 0.6);
 
   /* shadcn bridge re-declared so var(--color-x) resolves fresh */
-  --color-background:         var(--color-bg);
-  --color-foreground:          var(--color-fg);
-  --color-card:                var(--color-bg);
-  --color-card-foreground:     var(--color-fg);
-  --color-popover:             var(--color-bg);
-  --color-popover-foreground:  var(--color-fg);
-  --color-primary:             var(--color-fg);
-  --color-primary-foreground:  var(--color-bg);
-  --color-secondary:           var(--color-bg-muted);
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-bg);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-bg);
+  --color-popover-foreground: var(--color-fg);
+  --color-primary: var(--color-fg);
+  --color-primary-foreground: var(--color-bg);
+  --color-secondary: var(--color-bg-muted);
   --color-secondary-foreground: var(--color-fg);
-  --color-muted:               var(--color-bg-muted);
-  --color-muted-foreground:    var(--color-fg-muted);
-  --color-border:              var(--color-line);
-  --color-input:               var(--color-line);
+  --color-muted: var(--color-bg-muted);
+  --color-muted-foreground: var(--color-fg-muted);
+  --color-border: var(--color-line);
+  --color-input: var(--color-line);
 }
 
 /* ============================================================
@@ -133,7 +135,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
     background: var(--color-bg);
@@ -145,24 +148,40 @@
     letter-spacing: -0.01em;
   }
 
-  button, input, select, textarea {
+  button,
+  input,
+  select,
+  textarea {
     font-family: inherit;
     color: inherit;
   }
 
-  a { color: inherit; text-decoration: none; }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-  ::selection { background: var(--color-accent-soft-2); color: var(--color-fg); }
+  ::selection {
+    background: var(--color-accent-soft-2);
+    color: var(--color-fg);
+  }
 
   /* Scrollbar */
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
   ::-webkit-scrollbar-thumb {
     background: var(--color-line);
     border-radius: 8px;
     border: 2px solid var(--color-bg);
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--color-line-strong); }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-line-strong);
+  }
 }
 
 /* ============================================================
@@ -214,7 +233,9 @@
   letter-spacing: -0.04em;
 }
 [data-variation="experimental"] .orbit-h2,
-[data-variation="experimental"] .orbit-h3 { font-family: var(--font-sans); }
+[data-variation="experimental"] .orbit-h3 {
+  font-family: var(--font-sans);
+}
 [data-variation="experimental"] .metric-grid-bg {
   background-image:
     linear-gradient(var(--color-line-subtle) 1px, transparent 1px),
@@ -245,50 +266,68 @@
 /* ============================================================
    Code block syntax coloring
    ============================================================ */
-.code-c  { color: var(--color-fg-faint); }
-.code-k  { color: var(--color-accent); }
-.code-s  { color: var(--color-success); }
-.code-n  { color: var(--color-fg-muted); }
-.code-fn { color: var(--color-warn); }
+.code-c {
+  color: var(--color-fg-faint);
+}
+.code-k {
+  color: var(--color-accent);
+}
+.code-s {
+  color: var(--color-success);
+}
+.code-n {
+  color: var(--color-fg-muted);
+}
+.code-fn {
+  color: var(--color-warn);
+}
 
 /* ============================================================
    View transitions (variation switch)
    ============================================================ */
-.view-fade { animation: orbit-fade-in .18s ease; }
+.view-fade {
+  animation: orbit-fade-in 0.18s ease;
+}
 @keyframes orbit-fade-in {
-  from { opacity: 0; transform: translateY(2px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 :root {
-  --sidebar:        hsl(0 0% 98%);
-  --sidebar-foreground:        hsl(240 5.3% 26.1%);
-  --sidebar-primary:        hsl(240 5.9% 10%);
-  --sidebar-primary-foreground:        hsl(0 0% 98%);
-  --sidebar-accent:        hsl(240 4.8% 95.9%);
-  --sidebar-accent-foreground:        hsl(240 5.9% 10%);
-  --sidebar-border:        hsl(220 13% 91%);
-  --sidebar-ring:        hsl(217.2 91.2% 59.8%);
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 .dark {
-  --sidebar:        hsl(240 5.9% 10%);
-  --sidebar-foreground:        hsl(240 4.8% 95.9%);
-  --sidebar-primary:        hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground:        hsl(0 0% 100%);
-  --sidebar-accent:        hsl(240 3.7% 15.9%);
-  --sidebar-accent-foreground:        hsl(240 4.8% 95.9%);
-  --sidebar-border:        hsl(240 3.7% 15.9%);
-  --sidebar-ring:        hsl(217.2 91.2% 59.8%);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 @theme inline {
-  --color-sidebar:        var(--sidebar);
-  --color-sidebar-foreground:        var(--sidebar-foreground);
-  --color-sidebar-primary:        var(--sidebar-primary);
-  --color-sidebar-primary-foreground:        var(--sidebar-primary-foreground);
-  --color-sidebar-accent:        var(--sidebar-accent);
-  --color-sidebar-accent-foreground:        var(--sidebar-accent-foreground);
-  --color-sidebar-border:        var(--sidebar-border);
-  --color-sidebar-ring:        var(--sidebar-ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }

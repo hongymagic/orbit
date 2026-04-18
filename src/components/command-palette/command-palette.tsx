@@ -79,7 +79,12 @@ function CommandPaletteDialog() {
   );
 
   return (
-    <CommandDialog open={open} onOpenChange={setOpen} title="Command palette" description="Search, navigate, or run a command">
+    <CommandDialog
+      open={open}
+      onOpenChange={setOpen}
+      title="Command palette"
+      description="Search, navigate, or run a command"
+    >
       <CommandInput placeholder="Search deployments, services, routes, or commands…" />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -101,7 +106,10 @@ function CommandPaletteDialog() {
         <CommandSeparator />
 
         <CommandGroup heading="Navigate · product">
-          <CommandItem value="product dashboard" onSelect={() => run(() => router.push("/dashboard"))}>
+          <CommandItem
+            value="product dashboard"
+            onSelect={() => run(() => router.push("/dashboard"))}
+          >
             <Icon name="dash" className="mr-2" />
             <span>Dashboard</span>
             <CommandShortcut>shadcn block</CommandShortcut>
@@ -192,7 +200,10 @@ function CommandPaletteDialog() {
         <CommandSeparator />
 
         <CommandGroup heading="Actions">
-          <CommandItem value="action tweaks" onSelect={() => run(() => window.dispatchEvent(new Event("orbit:open-tweaks")))}>
+          <CommandItem
+            value="action tweaks"
+            onSelect={() => run(() => window.dispatchEvent(new Event("orbit:open-tweaks")))}
+          >
             <Icon name="settings" className="mr-2" />
             <span>Open Tweaks panel</span>
             <CommandShortcut>⌘.</CommandShortcut>
