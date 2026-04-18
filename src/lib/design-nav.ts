@@ -32,6 +32,15 @@ export const designNav: readonly DesignNavSection[] = [
     ],
   },
   {
+    label: "Surfaces",
+    items: [
+      { key: "surfaces", label: "All surfaces", icon: "dash",     href: "/_design/surfaces" },
+      { key: "signup",   label: "Signup",       icon: "plus",     href: "/_design/surfaces/signup" },
+      { key: "settings", label: "Settings",     icon: "settings", href: "/_design/surfaces/settings" },
+      { key: "billing",  label: "Billing",      icon: "key",      href: "/_design/surfaces/billing" },
+    ],
+  },
+  {
     label: "AI",
     items: [
       { key: "ai", label: "ai-elements", icon: "play", href: "/_design/ai" },
