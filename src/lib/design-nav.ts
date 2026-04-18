@@ -43,7 +43,9 @@ export const designNav: readonly DesignNavSection[] = [
   {
     label: "AI",
     items: [
-      { key: "ai", label: "ai-elements", icon: "play", href: "/_design/ai" },
+      { key: "ai",           label: "Conversation", icon: "play", href: "/_design/ai" },
+      { key: "ai-reasoning", label: "Reasoning",    icon: "cmd",  href: "/_design/ai/reasoning" },
+      { key: "ai-code",      label: "Code",         icon: "fn",   href: "/_design/ai/code" },
     ],
   },
 ] as const;
